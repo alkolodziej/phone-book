@@ -3,9 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-void add_contact(Contacts **head, char *name, char *last_name, char *phone_number, char *street, char *nr, char *post_code, char *town)
-{
-    // Alokacja pami�ci dla nowego kontaktu
+void add_contact(Contacts **head, char *name, char *last_name, char *phone_number, char *street, char *nr, char *post_code, char *town) {
+    // Alokacja pamięci dla nowego kontaktu
     Contacts *new_contact = (Contacts*)malloc(sizeof(Contacts));
     if (new_contact == NULL) {
         fprintf(stderr, "Memory allocation failed\n");
@@ -13,7 +12,6 @@ void add_contact(Contacts **head, char *name, char *last_name, char *phone_numbe
     }
 
     // Inicjalizacja danych dla nowego kontaktu
-    new_contact->id = (*head == NULL) ? 1 : (*head)->id + 1; // Nadanie unikalnego ID
     strcpy(new_contact->name, name);
     strcpy(new_contact->last_name, last_name);
     strcpy(new_contact->phone_number, phone_number);
@@ -22,9 +20,22 @@ void add_contact(Contacts **head, char *name, char *last_name, char *phone_numbe
     strcpy(new_contact->address.post_code, post_code);
     strcpy(new_contact->address.town, town);
 
-    // Dodanie nowego kontaktu na pocz�tek listy kontakt�w
-    new_contact->next = *head;
-    *head = new_contact;
+    // Ustawienie wskaźnika na następny element na NULL
+    new_contact->next = NULL;
+
+    // Jeśli lista jest pusta, ustaw nowy kontakt jako głowę listy
+    if (*head == NULL) {
+        new_contact->id = 1; // Nadanie unikalnego ID dla pierwszego kontaktu
+        *head = new_contact;
+    } else {
+        // W przeciwnym razie znajdź ostatni element listy i ustaw jego wskaźnik na następny na nowy kontakt
+        Contacts *current = *head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        new_contact->id = current->id + 1; // Nadanie unikalnego ID
+        current->next = new_contact;
+    }
 }
 
 void edit_contact(Contacts *head, int id, char *name, char *last_name, char *phone_number, char *street, char *nr, char *post_code, char *town)
@@ -75,20 +86,20 @@ void delete_contact(Contacts **head, int index)
     }
 }
 
-void display_list(const Contacts *head)
-{
-     if (head == NULL) {
-        return;
+void display_list(const Contacts *head) {
+    const Contacts *current = head;
+
+    printf("Contact List:\n");
+    printf("--------------------------------------------\n");
+    while (current != NULL) {
+        printf("ID: %d\n", current->id);
+        printf("Name: %s %s\n", current->name, current->last_name);
+        printf("Phone Number: %s\n", current->phone_number);
+        printf("Address: %s %s, %s, %s\n", current->address.street, current->address.nr, current->address.post_code, current->address.town);
+        printf("--------------------------------------------\n");
+
+        current = current->next;
     }
-
-    display_list(head->next);
-
-    printf("--------------------------------------------\n");
-    printf("ID: %d\n", head->id);
-    printf("Name: %s %s\n", head->name, head->last_name);
-    printf("Phone Number: %s\n", head->phone_number);
-    printf("Address: %s %s, %s, %s\n", head->address.street, head->address.nr, head->address.post_code, head->address.town);
-    printf("--------------------------------------------\n");
 }
 
 
