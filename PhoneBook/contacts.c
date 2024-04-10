@@ -60,55 +60,6 @@ void add_contact(Contacts **head, char *name, char *last_name, char *phone_numbe
     save_contacts_to_file(*head, "contacts.csv");
 }
 
-void edit_contact(Contacts *head, int id, char *name, char *last_name, char *phone_number, char *street, char *nr, char *post_code, char *town)
-{
-    Contacts *current = head;
-
-    while (current != NULL) {
-        if (current->id == id) {
-            // Znaleziono kontakt o podanym ID, aktualizacja danych
-            strcpy(current->name, name);
-            strcpy(current->last_name, last_name);
-            strcpy(current->phone_number, phone_number);
-            strcpy(current->address.street, street);
-            strcpy(current->address.nr, nr);
-            strcpy(current->address.post_code, post_code);
-            strcpy(current->address.town, town);
-            save_contacts_to_file(head, "contacts.csv");
-            return;
-        }
-        current = current->next;
-    }
-
-    // Nie znaleziono kontaktu o podanym ID
-    printf("Contact with ID %d not found.\n", id);
-}
-
-void delete_contact(Contacts **head, int index)
-{
-    Contacts *current = *head;
-    Contacts *prev = NULL;
-
-    // Przeszukiwanie listy w poszukiwaniu kontaktu o podanym indeksie
-    while (current != NULL && current->id != index) {
-        prev = current;
-        current = current->next;
-    }
-
-    // Je�li kontakt o podanym indeksie zosta� znaleziony
-    if (current != NULL) {
-        // Je�li kontakt jest na pocz�tku listy
-        if (prev == NULL) {
-            *head = current->next;
-        } else {
-            prev->next = current->next;
-        }
-        free(current);
-    } else {
-        printf("Contact with ID %d not found.\n", index);
-    }
-}
-
 void load_contacts_from_file(Contacts **head, const char *filename) {
     FILE *file = fopen(filename, "a+");
     if (file == NULL) {
@@ -119,10 +70,10 @@ void load_contacts_from_file(Contacts **head, const char *filename) {
     char line[256];
     while (fgets(line, sizeof(line), file)) {
         int id;
-        char name[50], last_name[50], phone_number[11];
+        char name[30], last_name[30], phone_number[11];
         char street[30], nr[5], post_code[6], town[30];
 
-        sscanf(line, "%d,%49[^,],%49[^,],%10[^,],%29[^,],%4[^,],%5[^,],%29[^\n]",
+        sscanf(line, "%d,%29[^,],%29[^,],%10[^,],%29[^,],%4[^,],%5[^,],%29[^\n]",
                &id, name, last_name, phone_number, street, nr, post_code, town);
 
         add_contact(head, name, last_name, phone_number, street, nr, post_code, town);
@@ -134,18 +85,28 @@ void load_contacts_from_file(Contacts **head, const char *filename) {
 
 void display_list(const Contacts *head) {
     const Contacts *current = head;
+    puts("");
+    if(NULL==head)
+    {
+        puts("There are no contacts in the list.");
+        return;
+    }
 
-    printf("Contact List:\n");
-    printf("--------------------------------------------\n");
+    // Wyświetlenie nagłówków kolumn
+    printf("%-7s|%-32s|%-32s|%-15s|%-32s|%-6s|%-10s|%-31s|\n", "ID", "Name", "Last Name", "Phone Number", "Street", "Nr", "Post Code", "Town");
+
+    // Separator
+    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+
+    // Wyświetlenie danych kontaktów w formie kolumn
     while (current != NULL) {
-        printf("ID: %d\n", current->id);
-        printf("Name: %s %s\n", current->name, current->last_name);
-        printf("Phone Number: %s\n", current->phone_number);
-        printf("Address: %s %s, %s, %s\n", current->address.street, current->address.nr, current->address.post_code, current->address.town);
-        printf("--------------------------------------------\n");
+        printf("%-7d|%-32s|%-32s|%-15s|%-32s|%-6s|%-10s|%-31s|\n", current->id, current->name, current->last_name, current->phone_number,
+               current->address.street, current->address.nr, current->address.post_code, current->address.town);
 
         current = current->next;
     }
+    printf("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    puts("");
 }
 
 
