@@ -4,7 +4,7 @@
 typedef struct Address {
   char street[30];
   char nr[5];
-  char post_code[6];
+  char post_code[8];
   char town[30];
 } Address;
 

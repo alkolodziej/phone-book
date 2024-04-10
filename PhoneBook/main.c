@@ -6,11 +6,15 @@ int main() {
     Contacts *head = NULL;
     load_contacts_from_file(&head, "contacts.csv");
     int option;
-
+    clear_screen();
     do {
         display_menu();
-        scanf("%d", &option);
+        option = get_user_choice();
+        clear_screen();
         execute_option(&head, option);
+        if(option!=5) printf("\nPress enter to continue...\n");
+        getchar();
+        clear_screen();
     } while(option != 5);
 
     // debug
