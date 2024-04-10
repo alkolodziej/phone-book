@@ -3,6 +3,27 @@
 #include <stdlib.h>
 #include <string.h>
 
+void save_contacts_to_file(Contacts *head, const char *filename) {
+    FILE *file = fopen(filename, "w");
+    if (file == NULL) {
+        fprintf(stderr, "Error opening file for writing.\n");
+        return;
+    }
+
+    const Contacts *current = head;
+    while (current != NULL) {
+        fprintf(file, "%d,%s,%s,%s,%s,%s,%s,%s\n",
+                current->id, current->name, current->last_name,
+                current->phone_number, current->address.street,
+                current->address.nr, current->address.post_code,
+                current->address.town);
+        current = current->next;
+    }
+
+    fclose(file);
+}
+
+
 void add_contact(Contacts **head, char *name, char *last_name, char *phone_number, char *street, char *nr, char *post_code, char *town) {
     // Alokacja pamięci dla nowego kontaktu
     Contacts *new_contact = (Contacts*)malloc(sizeof(Contacts));
@@ -36,6 +57,7 @@ void add_contact(Contacts **head, char *name, char *last_name, char *phone_numbe
         new_contact->id = current->id + 1; // Nadanie unikalnego ID
         current->next = new_contact;
     }
+    save_contacts_to_file(*head, "contacts.csv");
 }
 
 void edit_contact(Contacts *head, int id, char *name, char *last_name, char *phone_number, char *street, char *nr, char *post_code, char *town)
@@ -52,6 +74,7 @@ void edit_contact(Contacts *head, int id, char *name, char *last_name, char *pho
             strcpy(current->address.nr, nr);
             strcpy(current->address.post_code, post_code);
             strcpy(current->address.town, town);
+            save_contacts_to_file(head, "contacts.csv");
             return;
         }
         current = current->next;
@@ -85,6 +108,29 @@ void delete_contact(Contacts **head, int index)
         printf("Contact with ID %d not found.\n", index);
     }
 }
+
+void load_contacts_from_file(Contacts **head, const char *filename) {
+    FILE *file = fopen(filename, "a+");
+    if (file == NULL) {
+        fprintf(stderr, "Error opening file for reading.\n");
+        return;
+    }
+
+    char line[256];
+    while (fgets(line, sizeof(line), file)) {
+        int id;
+        char name[50], last_name[50], phone_number[11];
+        char street[30], nr[5], post_code[6], town[30];
+
+        sscanf(line, "%d,%49[^,],%49[^,],%10[^,],%29[^,],%4[^,],%5[^,],%29[^\n]",
+               &id, name, last_name, phone_number, street, nr, post_code, town);
+
+        add_contact(head, name, last_name, phone_number, street, nr, post_code, town);
+    }
+
+    fclose(file);
+}
+
 
 void display_list(const Contacts *head) {
     const Contacts *current = head;
