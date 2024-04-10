@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1712754410 source:c:\users\knapb\onedrive\dokumenty\github\phone-book\phonebook\contacts.c
+	"contacts.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1712754410 c:\users\knapb\onedrive\dokumenty\github\phone-book\phonebook\contacts.h
+
+1712754523 source:c:\users\knapb\onedrive\dokumenty\github\phone-book\phonebook\main.c
+	<stdio.h>
+	"contacts.h"
+
