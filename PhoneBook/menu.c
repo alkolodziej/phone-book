@@ -35,6 +35,20 @@ void display_menu() {
     printf(COLOR_BOLD "****************************\n" COLOR_RESET);
 }
 
+void get_line(char *line, long long unsigned length)
+{
+    fgets(line, sizeof(line), stdin);
+    line[strcspn(line, "\n")] = '\0';
+    if (strlen(line) > length) {
+                // Ignoruj dodatkowe znaki w buforze wejściowym (czyści bufor)
+                // Bez tego znaki w buforze wejściowym mogą wpłynąć na kolejne wczytywanie danych
+                // https://stackoverflow.com/posts/28576329/revisions
+                // Można teoretycznie do każdego fgets dodać takie coś
+                int ch;
+                while ((ch = getchar()) != '\n' && ch != EOF);
+            }
+}
+
 void add_contact_from_user(Contacts **head) {
     char name[30], last_name[30], phone_number[11];
     char street[30], nr[5], post_code[8], town[30];
@@ -42,33 +56,33 @@ void add_contact_from_user(Contacts **head) {
     printf(COLOR_BOLD "Adding new contact\n\n" COLOR_RESET);
 
     // getchar();
+    // Imię
     printf(COLOR_BOLD "Enter name: " COLOR_RESET);
-    fgets(name, sizeof(name), stdin);
-    name[strcspn(name, "\n")] = '\0';
+    get_line(name, 30);
 
+    // Nazwisko
     printf(COLOR_BOLD "Enter last name: " COLOR_RESET);
-    fgets(last_name, sizeof(last_name), stdin);
-    last_name[strcspn(last_name, "\n")] = '\0';
+    get_line(last_name, 30);
 
+    // Numer telefonu
     printf(COLOR_BOLD "Enter phone number: " COLOR_RESET);
-    fgets(phone_number, sizeof(phone_number), stdin);
-    phone_number[strcspn(phone_number, "\n")] = '\0';
+    get_line(phone_number, 10);
 
+    // Ulica
     printf(COLOR_BOLD "Enter street: " COLOR_RESET);
-    fgets(street, sizeof(street), stdin);
-    street[strcspn(street, "\n")] = '\0';
+    get_line(street, 30);
 
+    // Numer domu
     printf(COLOR_BOLD "Enter house number: " COLOR_RESET);
-    fgets(nr, sizeof(nr), stdin);
-    nr[strcspn(nr, "\n")] = '\0';
+    get_line(nr, 5);
 
+    // Kod pocztowy
     printf(COLOR_BOLD "Enter post code: " COLOR_RESET);
-    fgets(post_code, sizeof(post_code), stdin);
-    post_code[strcspn(post_code, "\n")] = '\0';
+    get_line(post_code, 6);
     
+    // Miasto
     printf(COLOR_BOLD "Enter town: " COLOR_RESET);
-    fgets(town, sizeof(town), stdin);
-    town[strcspn(town, "\n")] = '\0';
+    get_line(town, 30);
 
     // getchar();
 
@@ -95,52 +109,37 @@ void edit_contact_from_user(Contacts *head) {
             // Imię
             printf(COLOR_YELLOW "Current name: %s\n" COLOR_RESET, current->name);
             printf(COLOR_BOLD "Enter new name (leave blank to keep current): " COLOR_RESET);
-            fgets(name, sizeof(name), stdin);
-            name[strcspn(name, "\n")] = '\0';
+            get_line(name, 30);
 
             // Nazwisko
             printf(COLOR_YELLOW "Current last name: %s\n" COLOR_RESET, current->last_name);
             printf(COLOR_BOLD "Enter new last name (leave blank to keep current): " COLOR_RESET);
-            fgets(last_name, sizeof(last_name), stdin);
-            last_name[strcspn(last_name, "\n")] = '\0';
+            get_line(last_name, 30);
 
             // Numer telefonu
             printf(COLOR_YELLOW "Current phone number: %s\n" COLOR_RESET, current->phone_number);
             printf(COLOR_BOLD "Enter new phone number (leave blank to keep current): " COLOR_RESET);
-            fgets(phone_number, sizeof(phone_number), stdin);
-            phone_number[strcspn(phone_number, "\n")] = '\0';
+            get_line(phone_number, 10);
 
             // Ulica
             printf(COLOR_YELLOW "Current street: %s\n" COLOR_RESET, current->address.street);
             printf(COLOR_BOLD "Enter new street (leave blank to keep current): " COLOR_RESET);
-            fgets(street, sizeof(street), stdin);
-            street[strcspn(street, "\n")] = '\0';
+            get_line(street, 30);
 
             // Numer domu
             printf(COLOR_YELLOW "Current house number: %s\n" COLOR_RESET, current->address.nr);
             printf(COLOR_BOLD "Enter new house number (leave blank to keep current): " COLOR_RESET);
-            fgets(nr, sizeof(nr), stdin);
-            nr[strcspn(nr, "\n")] = '\0';
+            get_line(nr, 5);
 
             // Kod pocztowy
             printf(COLOR_YELLOW "Current post code: %s\n" COLOR_RESET, current->address.post_code);
             printf(COLOR_BOLD "Enter new post code (leave blank to keep current): " COLOR_RESET);
-            fgets(post_code, sizeof(post_code), stdin);
-            post_code[strcspn(post_code, "\n")] = '\0'; 
-            if (strlen(post_code) > 6) {
-                // Ignoruj dodatkowe znaki w buforze wejściowym (czyści bufor)
-                // Bez tego znaki w buforze wejściowym mogą wpłynąć na kolejne wczytywanie danych
-                // https://stackoverflow.com/posts/28576329/revisions
-                // Można teoretycznie do każdego fgets dodać takie coś
-                int ch;
-                while ((ch = getchar()) != '\n' && ch != EOF);
-            }
+            get_line(post_code, 6);
 
             // Miasto
             printf(COLOR_YELLOW "Current town: %s\n" COLOR_RESET, current->address.town);
             printf(COLOR_BOLD "Enter new town (leave blank to keep current): " COLOR_RESET);
-            fgets(town, sizeof(town), stdin);
-            town[strcspn(town, "\n")] = '\0';
+            get_line(town, 30);
 
             // Aktualizacja danych, jeśli zostały wprowadzone
             if (strlen(name) > 0) {
@@ -165,7 +164,7 @@ void edit_contact_from_user(Contacts *head) {
                 strcpy(current->address.town, town);
             }
 
-            save_contacts_to_file(head, "contacts.csv");
+            //save_contacts_to_file(head, "contacts.csv");
             printf(COLOR_GREEN "Contact edited successfully.\n" COLOR_RESET);
             return;
         }
@@ -204,6 +203,7 @@ void delete_contact_from_user(Contacts **head) {
     } else {
         printf(COLOR_BLUE "Contact with ID %d not found.\n" COLOR_RESET, id);
     }
+    getchar();
 }
 
 void execute_option(Contacts **head, int option) {

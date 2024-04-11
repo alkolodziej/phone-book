@@ -14,6 +14,7 @@ int main() {
         execute_option(&head, option);
         if(option!=5) printf("\nPress enter to continue...\n");
         getchar();
+        save_contacts_to_file(head, "contacts.csv");
         clear_screen();
     } while(option != 5);
 

@@ -18,7 +18,7 @@ void save_contacts_to_file(Contacts *head, const char *filename) {
                 current->phone_number, current->address.street,
                 current->address.nr, current->address.post_code,
                 current->address.town);
-        current = current->next;
+                current = current->next;
     }
 
     fclose(file);
@@ -58,7 +58,7 @@ void add_contact(Contacts **head, char *name, char *last_name, char *phone_numbe
         new_contact->id = current->id + 1; // Nadanie unikalnego ID
         current->next = new_contact;
     }
-    save_contacts_to_file(*head, "contacts.csv");
+    //save_contacts_to_file(*head, "contacts.csv");
 }
 
 void load_contacts_from_file(Contacts **head, const char *filename) {
@@ -68,16 +68,27 @@ void load_contacts_from_file(Contacts **head, const char *filename) {
         return;
     }
 
-    char line[256];
-    while (fgets(line, sizeof(line), file)) {
-        int id;
-        char name[30], last_name[30], phone_number[11];
-        char street[30], nr[5], post_code[8], town[30];
-
-        sscanf(line, "%d,%29[^,],%29[^,],%10[^,],%29[^,],%4[^,],%6[^,],%29[^\n]",
-               &id, name, last_name, phone_number, street, nr, post_code, town);
-
-        add_contact(head, name, last_name, phone_number, street, nr, post_code, town);
+    int id;
+    char name[30], last_name[30], phone_number[11];
+    char street[30], nr[5], post_code[8], town[30];
+    while (fscanf(file, "%d,%29[^,],%29[^,],%10[^,],%29[^,],%4[^,],%6[^,],%29[^\n]",
+               &id, name, last_name, phone_number, street, nr, post_code, town)==8) {
+        Contacts *new_contact = (Contacts*)malloc(sizeof(Contacts));
+        if (new_contact == NULL) {
+            fprintf(stderr, COLOR_RED "Memory allocation failed\n" COLOR_RESET);
+            exit(EXIT_FAILURE);
+        }
+        new_contact->next = NULL;
+        
+        new_contact->id = id;
+        strcpy(new_contact->name, name);
+        strcpy(new_contact->last_name, last_name);
+        strcpy(new_contact->phone_number, phone_number);
+        strcpy(new_contact->address.street, street);
+        strcpy(new_contact->address.nr, nr);
+        strcpy(new_contact->address.post_code, post_code);
+        strcpy(new_contact->address.town, town);
+        *head = new_contact;
     }
 
     fclose(file);
@@ -93,9 +104,11 @@ void load_contacts_from_file(Contacts **head, const char *filename) {
 #define COLUMN_WIDTH_TOWN 31
 
 void print_separator(int total_width) {
+    putchar('+');
     for (int i = 0; i < total_width; i++) {
         putchar('-');
     }
+    putchar('+');
     putchar('\n');
 }
 
@@ -111,12 +124,12 @@ void display_list(const Contacts *head) {
     // Obliczanie całkowitej szerokości separatora
     int total_width = COLUMN_WIDTH_ID + COLUMN_WIDTH_NAME + COLUMN_WIDTH_LAST_NAME +
                       COLUMN_WIDTH_PHONE_NUMBER + COLUMN_WIDTH_STREET + COLUMN_WIDTH_NR +
-                      COLUMN_WIDTH_POST_CODE + COLUMN_WIDTH_TOWN + 8 * 2; // X * Y ; X - ilość kolumn, Y - szerokość kolumny z "| "
+                      COLUMN_WIDTH_POST_CODE + COLUMN_WIDTH_TOWN + 8 * 2 - 1; // X * Y ; X - ilość kolumn, Y - szerokość kolumny z "| "
 
     print_separator(total_width);
 
     // Wyświetlenie nagłówków kolumn
-    printf(COLOR_BOLD " %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s|\n" COLOR_RESET,
+    printf(COLOR_BOLD "| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s|\n" COLOR_RESET,
            COLUMN_WIDTH_ID, "ID", COLUMN_WIDTH_NAME, "Name", COLUMN_WIDTH_LAST_NAME, "Last Name",
            COLUMN_WIDTH_PHONE_NUMBER, "Phone Number", COLUMN_WIDTH_STREET, "Street", COLUMN_WIDTH_NR, "Nr",
            COLUMN_WIDTH_POST_CODE, "Post Code", COLUMN_WIDTH_TOWN, "Town");
@@ -126,7 +139,7 @@ void display_list(const Contacts *head) {
 
     // Wyświetlenie danych kontaktów w formie kolumn
     while (current != NULL) {
-        printf(" %-*d| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s|\n",
+        printf("| %-*d| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s|\n",
                COLUMN_WIDTH_ID, current->id, COLUMN_WIDTH_NAME, current->name, COLUMN_WIDTH_LAST_NAME, current->last_name,
                COLUMN_WIDTH_PHONE_NUMBER, current->phone_number, COLUMN_WIDTH_STREET, current->address.street,
                COLUMN_WIDTH_NR, current->address.nr, COLUMN_WIDTH_POST_CODE, current->address.post_code,
