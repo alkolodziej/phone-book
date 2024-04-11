@@ -113,6 +113,8 @@ void display_list(const Contacts *head) {
                       COLUMN_WIDTH_PHONE_NUMBER + COLUMN_WIDTH_STREET + COLUMN_WIDTH_NR +
                       COLUMN_WIDTH_POST_CODE + COLUMN_WIDTH_TOWN + 8 * 2; // X * Y ; X - ilość kolumn, Y - szerokość kolumny z "| "
 
+    print_separator(total_width);
+
     // Wyświetlenie nagłówków kolumn
     printf(COLOR_BOLD " %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s|\n" COLOR_RESET,
            COLUMN_WIDTH_ID, "ID", COLUMN_WIDTH_NAME, "Name", COLUMN_WIDTH_LAST_NAME, "Last Name",
