@@ -11,8 +11,6 @@
 #define CLEAR_SCREEN "clear"
 #endif
 
-
-
 void clear_screen() {
     system(CLEAR_SCREEN);
 }
@@ -52,6 +50,12 @@ void get_line(char *line, long long unsigned length)
 void add_contact_from_user(Contacts **head) {
     char name[30], last_name[30], phone_number[11];
     char street[30], nr[5], post_code[8], town[30];
+    Contacts *new_contact = (Contacts*)malloc(sizeof(Contacts));
+    if (new_contact == NULL) {
+        fprintf(stderr, COLOR_RED "Memory allocation failed\n" COLOR_RESET);
+        exit(EXIT_FAILURE);
+    }
+    new_contact->next = NULL;
 
     printf(COLOR_BOLD "Adding new contact\n\n" COLOR_RESET);
 
@@ -59,36 +63,55 @@ void add_contact_from_user(Contacts **head) {
     // Imię
     printf(COLOR_BOLD "Enter name: " COLOR_RESET);
     get_line(name, 30);
+    strcpy(new_contact->name, name);
 
     // Nazwisko
     printf(COLOR_BOLD "Enter last name: " COLOR_RESET);
     get_line(last_name, 30);
+    strcpy(new_contact->last_name, last_name);
 
     // Numer telefonu
     printf(COLOR_BOLD "Enter phone number: " COLOR_RESET);
     get_line(phone_number, 10);
+    strcpy(new_contact->phone_number, phone_number);
 
     // Ulica
     printf(COLOR_BOLD "Enter street: " COLOR_RESET);
     get_line(street, 30);
+    strcpy(new_contact->address.street, street);
 
     // Numer domu
     printf(COLOR_BOLD "Enter house number: " COLOR_RESET);
     get_line(nr, 5);
+    strcpy(new_contact->address.nr, nr);
 
     // Kod pocztowy
     printf(COLOR_BOLD "Enter post code: " COLOR_RESET);
     get_line(post_code, 6);
+    strcpy(new_contact->address.post_code, post_code);
     
     // Miasto
     printf(COLOR_BOLD "Enter town: " COLOR_RESET);
     get_line(town, 30);
+    strcpy(new_contact->address.town, town);
 
     // getchar();
 
     printf("%s %s \t %s \t %s %s \t %s %s\n", name, last_name, phone_number, street, nr, post_code, town);
 
-    add_contact(head, name, last_name, phone_number, street, nr, post_code, town);
+    if (*head == NULL) {
+        new_contact->id = 1; // Nadanie unikalnego ID dla pierwszego kontaktu
+        *head = new_contact;
+    } else {
+        // W przeciwnym razie znajdź ostatni element listy i ustaw jego wskaźnik na następny na nowy kontakt
+        Contacts *current = *head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        new_contact->id = current->id + 1; // Nadanie unikalnego ID
+        current->next = new_contact;
+    }
+    
     printf(COLOR_GREEN "Contact added successfully.\n" COLOR_RESET);
 }
 

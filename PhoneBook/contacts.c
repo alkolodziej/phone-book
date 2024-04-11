@@ -4,6 +4,15 @@
 #include "contacts.h"
 #include "colors.h"
 
+#define COLUMN_WIDTH_ID 7
+#define COLUMN_WIDTH_NAME 32
+#define COLUMN_WIDTH_LAST_NAME 32
+#define COLUMN_WIDTH_PHONE_NUMBER 15
+#define COLUMN_WIDTH_STREET 32
+#define COLUMN_WIDTH_NR 6
+#define COLUMN_WIDTH_POST_CODE 10
+#define COLUMN_WIDTH_TOWN 31
+
 void save_contacts_to_file(Contacts *head, const char *filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
@@ -22,43 +31,6 @@ void save_contacts_to_file(Contacts *head, const char *filename) {
     }
 
     fclose(file);
-}
-
-
-void add_contact(Contacts **head, char *name, char *last_name, char *phone_number, char *street, char *nr, char *post_code, char *town) {
-    // Alokacja pamięci dla nowego kontaktu
-    Contacts *new_contact = (Contacts*)malloc(sizeof(Contacts));
-    if (new_contact == NULL) {
-        fprintf(stderr, COLOR_RED "Memory allocation failed\n" COLOR_RESET);
-        exit(EXIT_FAILURE);
-    }
-
-    // Inicjalizacja danych dla nowego kontaktu
-    strcpy(new_contact->name, name);
-    strcpy(new_contact->last_name, last_name);
-    strcpy(new_contact->phone_number, phone_number);
-    strcpy(new_contact->address.street, street);
-    strcpy(new_contact->address.nr, nr);
-    strcpy(new_contact->address.post_code, post_code);
-    strcpy(new_contact->address.town, town);
-
-    // Ustawienie wskaźnika na następny element na NULL
-    new_contact->next = NULL;
-
-    // Jeśli lista jest pusta, ustaw nowy kontakt jako głowę listy
-    if (*head == NULL) {
-        new_contact->id = 1; // Nadanie unikalnego ID dla pierwszego kontaktu
-        *head = new_contact;
-    } else {
-        // W przeciwnym razie znajdź ostatni element listy i ustaw jego wskaźnik na następny na nowy kontakt
-        Contacts *current = *head;
-        while (current->next != NULL) {
-            current = current->next;
-        }
-        new_contact->id = current->id + 1; // Nadanie unikalnego ID
-        current->next = new_contact;
-    }
-    //save_contacts_to_file(*head, "contacts.csv");
 }
 
 void load_contacts_from_file(Contacts **head, const char *filename) {
@@ -93,15 +65,6 @@ void load_contacts_from_file(Contacts **head, const char *filename) {
 
     fclose(file);
 }
-
-#define COLUMN_WIDTH_ID 7
-#define COLUMN_WIDTH_NAME 32
-#define COLUMN_WIDTH_LAST_NAME 32
-#define COLUMN_WIDTH_PHONE_NUMBER 15
-#define COLUMN_WIDTH_STREET 32
-#define COLUMN_WIDTH_NR 6
-#define COLUMN_WIDTH_POST_CODE 10
-#define COLUMN_WIDTH_TOWN 31
 
 void print_separator(int total_width) {
     putchar('+');

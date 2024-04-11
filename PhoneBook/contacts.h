@@ -18,10 +18,9 @@ typedef struct Contacts {
 } Contacts;
 
 void save_contacts_to_file(Contacts *head, const char *filename);
-void add_contact(Contacts **head, char *name, char *last_name, char *phone_number, char *street, char *nr, char *post_code, char *town);
-void display_list(const Contacts *head);
-void load_contacts_from_file(Contacts **head, const char *filename);
 void print_separator(int total_width);
+void load_contacts_from_file(Contacts **head, const char *filename);
+void display_list(const Contacts *head);
 
 
 #endif // CONTACTS_H_INCLUDED
