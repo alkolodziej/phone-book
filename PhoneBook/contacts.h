@@ -3,8 +3,8 @@
 
 typedef struct Address {
   char street[30];
-  char nr[5];
-  char post_code[8];
+  char nr[6];
+  char post_code[7];
   char town[30];
 } Address;
 
@@ -12,7 +12,7 @@ typedef struct Contacts {
   int id;
   char name[30];
   char last_name[30];
-  char phone_number[11];
+  char phone_number[10];
   Address address;
   struct Contacts *next;
 } Contacts;

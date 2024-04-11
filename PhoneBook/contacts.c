@@ -9,7 +9,7 @@
 #define COLUMN_WIDTH_LAST_NAME 32
 #define COLUMN_WIDTH_PHONE_NUMBER 15
 #define COLUMN_WIDTH_STREET 32
-#define COLUMN_WIDTH_NR 6
+#define COLUMN_WIDTH_NR 7
 #define COLUMN_WIDTH_POST_CODE 10
 #define COLUMN_WIDTH_TOWN 31
 
@@ -41,9 +41,11 @@ void load_contacts_from_file(Contacts **head, const char *filename) {
     }
 
     int id;
-    char name[30], last_name[30], phone_number[11];
-    char street[30], nr[5], post_code[8], town[30];
-    while (fscanf(file, "%d,%29[^,],%29[^,],%10[^,],%29[^,],%4[^,],%6[^,],%29[^\n]",
+    char name[30], last_name[30], phone_number[10];
+    char street[30], nr[6], post_code[7], town[30];
+    Contacts *current_contact = NULL;
+    
+    while (fscanf(file, "%d,%29[^,],%29[^,],%9[^,],%29[^,],%5[^,],%6[^,],%29[^\n]",
                &id, name, last_name, phone_number, street, nr, post_code, town)==8) {
         Contacts *new_contact = (Contacts*)malloc(sizeof(Contacts));
         if (new_contact == NULL) {
@@ -60,7 +62,16 @@ void load_contacts_from_file(Contacts **head, const char *filename) {
         strcpy(new_contact->address.nr, nr);
         strcpy(new_contact->address.post_code, post_code);
         strcpy(new_contact->address.town, town);
-        *head = new_contact;
+
+        if (*head == NULL) {
+            // Jeśli lista jest pusta, ustaw nowy kontakt jako głowę listy
+            *head = new_contact;
+            current_contact = new_contact; // Ustaw bieżący kontakt na nowy kontakt
+        } else {
+            // W przeciwnym razie dołącz nowy kontakt na koniec listy
+            current_contact->next = new_contact;
+            current_contact = new_contact; // Aktualizuj bieżący kontakt
+        }
     }
 
     fclose(file);
