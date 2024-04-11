@@ -115,6 +115,13 @@ void add_contact_from_user(Contacts **head) {
     printf(COLOR_GREEN "Contact added successfully.\n" COLOR_RESET);
 }
 
+void check_to_change(char *first, char *second)
+{
+    if (strlen(second) > 0) {
+        strcpy(first, second);
+    }
+}
+
 void edit_contact_from_user(Contacts *head) {
     Contacts *current = head;
     int id;
@@ -165,27 +172,13 @@ void edit_contact_from_user(Contacts *head) {
             get_line(town, 30);
 
             // Aktualizacja danych, jeśli zostały wprowadzone
-            if (strlen(name) > 0) {
-                strcpy(current->name, name);
-            }
-            if (strlen(last_name) > 0) {
-                strcpy(current->last_name, last_name);
-            }
-            if (strlen(phone_number) > 0) {
-                strcpy(current->phone_number, phone_number);
-            }
-            if (strlen(street) > 0) {
-                strcpy(current->address.street, street);
-            }
-            if (strlen(nr) > 0) {
-                strcpy(current->address.nr, nr);
-            }
-            if (strlen(post_code) > 0) {
-                strcpy(current->address.post_code, post_code);
-            }
-            if (strlen(town) > 0) {
-                strcpy(current->address.town, town);
-            }
+            check_to_change(current->name, name);
+            check_to_change(current->last_name, last_name);
+            check_to_change(current->phone_number, phone_number);
+            check_to_change(current->address.street, street);
+            check_to_change(current->address.nr, nr);
+            check_to_change(current->address.post_code, post_code);
+            check_to_change(current->address.town, town);
 
             //save_contacts_to_file(head, "contacts.csv");
             printf(COLOR_GREEN "Contact edited successfully.\n" COLOR_RESET);
