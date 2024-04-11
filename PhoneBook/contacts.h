@@ -20,7 +20,7 @@ typedef struct Contacts {
 void save_contacts_to_file(Contacts *head, const char *filename);
 void print_separator(int total_width);
 void load_contacts_from_file(Contacts **head, const char *filename);
-void display_list(const Contacts *head);
+void display_list(const Contacts *head, int sorting_mode);
 
 
 #endif // CONTACTS_H_INCLUDED

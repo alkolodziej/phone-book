@@ -5,6 +5,7 @@
 #include "contacts.h"
 #include "colors.h"
 
+// Definicja makra do czyszczenia ekranu w zależności od systemu operacyjnego
 #ifdef _WIN32
 #define CLEAR_SCREEN "cls"
 #else
@@ -35,7 +36,7 @@ void display_menu() {
 }
 
 void get_line(char *line, size_t size) {
-    fgets(line, size, stdin);
+    fgets(line, (int)size, stdin);
     line[strcspn(line, "\n")] = '\0'; // Usunięcie znaku nowej linii
 
     // Sprawdzenie, czy długość wczytanej linii jest równa maksymalnemu rozmiarowi tablicy
@@ -94,9 +95,8 @@ void add_contact_from_user(Contacts **head) {
     get_line(town, sizeof(town));
     strcpy(new_contact->address.town, town);
 
-    // getchar();
-
-    printf("%s %s \t %s \t %s %s \t %s %s\n", name, last_name, phone_number, street, nr, post_code, town);
+    
+    // printf("\n%s %s \t %s \t %s %s \t %s %s\n", name, last_name, phone_number, street, nr, post_code, town);
 
     if (*head == NULL) {
         new_contact->id = 1; // Nadanie unikalnego ID dla pierwszego kontaktu
@@ -258,8 +258,7 @@ void search_contact_from_user(const Contacts *head) {
     printf("3. City\n");
     printf("4. Post Code\n");
     printf("5. Return to menu\n");
-    printf(COLOR_BOLD "Enter your choice: " COLOR_RESET);
-    scanf("%d", &choice);
+    choice = get_user_choice();
     getchar(); // Clear input buffer
 
     switch (choice) {
@@ -339,7 +338,7 @@ void execute_option(Contacts **head, int option) {
             exit(0);
             break;
         case 1:
-            display_list(*head);
+            display_list(*head, 1);
             break;
         case 2:
             add_contact_from_user(head);
