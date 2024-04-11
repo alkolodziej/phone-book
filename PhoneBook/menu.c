@@ -123,103 +123,113 @@ void check_to_change(char *first, char *second)
 }
 
 void edit_contact_from_user(Contacts *head) {
-    Contacts *current = head;
-    int id;
-    char name[30], last_name[30], phone_number[11];
-    char street[30], nr[5], post_code[8], town[30];
+    if(NULL != head){
+        Contacts *current = head;
+        int id;
+        char name[30], last_name[30], phone_number[11];
+        char street[30], nr[5], post_code[8], town[30];
 
-    printf(COLOR_BOLD "Enter ID of contact to edit: " COLOR_RESET);
-    scanf("%d", &id);
-    getchar();
+        printf(COLOR_BOLD "Enter ID of contact to edit: " COLOR_RESET);
+        scanf("%d", &id);
+        getchar();
 
-    while (current != NULL) {
-        if (current->id == id) {
-            // Znaleziono kontakt o podanym ID, aktualizacja danych
+        while (current != NULL) {
+                if (current->id == id) {
+                // Znaleziono kontakt o podanym ID, aktualizacja danych
 
-            // Imię
-            printf(COLOR_YELLOW "Current name: %s\n" COLOR_RESET, current->name);
-            printf(COLOR_BOLD "Enter new name (leave blank to keep current): " COLOR_RESET);
-            get_line(name, 30);
+                // Imię
+                printf(COLOR_YELLOW "Current name: %s\n" COLOR_RESET, current->name);
+                printf(COLOR_BOLD "Enter new name (leave blank to keep current): " COLOR_RESET);
+                get_line(name, 30);
 
-            // Nazwisko
-            printf(COLOR_YELLOW "Current last name: %s\n" COLOR_RESET, current->last_name);
-            printf(COLOR_BOLD "Enter new last name (leave blank to keep current): " COLOR_RESET);
-            get_line(last_name, 30);
+                // Nazwisko
+                printf(COLOR_YELLOW "Current last name: %s\n" COLOR_RESET, current->last_name);
+                printf(COLOR_BOLD "Enter new last name (leave blank to keep current): " COLOR_RESET);
+                get_line(last_name, 30);
 
-            // Numer telefonu
-            printf(COLOR_YELLOW "Current phone number: %s\n" COLOR_RESET, current->phone_number);
-            printf(COLOR_BOLD "Enter new phone number (leave blank to keep current): " COLOR_RESET);
-            get_line(phone_number, 10);
+                // Numer telefonu
+                printf(COLOR_YELLOW "Current phone number: %s\n" COLOR_RESET, current->phone_number);
+                printf(COLOR_BOLD "Enter new phone number (leave blank to keep current): " COLOR_RESET);
+                get_line(phone_number, 10);
 
-            // Ulica
-            printf(COLOR_YELLOW "Current street: %s\n" COLOR_RESET, current->address.street);
-            printf(COLOR_BOLD "Enter new street (leave blank to keep current): " COLOR_RESET);
-            get_line(street, 30);
+                // Ulica
+                printf(COLOR_YELLOW "Current street: %s\n" COLOR_RESET, current->address.street);
+                printf(COLOR_BOLD "Enter new street (leave blank to keep current): " COLOR_RESET);
+                get_line(street, 30);
 
-            // Numer domu
-            printf(COLOR_YELLOW "Current house number: %s\n" COLOR_RESET, current->address.nr);
-            printf(COLOR_BOLD "Enter new house number (leave blank to keep current): " COLOR_RESET);
-            get_line(nr, 5);
+                // Numer domu
+                printf(COLOR_YELLOW "Current house number: %s\n" COLOR_RESET, current->address.nr);
+                printf(COLOR_BOLD "Enter new house number (leave blank to keep current): " COLOR_RESET);
+                get_line(nr, 5);
 
-            // Kod pocztowy
-            printf(COLOR_YELLOW "Current post code: %s\n" COLOR_RESET, current->address.post_code);
-            printf(COLOR_BOLD "Enter new post code (leave blank to keep current): " COLOR_RESET);
-            get_line(post_code, 6);
+                // Kod pocztowy
+                printf(COLOR_YELLOW "Current post code: %s\n" COLOR_RESET, current->address.post_code);
+                printf(COLOR_BOLD "Enter new post code (leave blank to keep current): " COLOR_RESET);
+                get_line(post_code, 6);
 
-            // Miasto
-            printf(COLOR_YELLOW "Current town: %s\n" COLOR_RESET, current->address.town);
-            printf(COLOR_BOLD "Enter new town (leave blank to keep current): " COLOR_RESET);
-            get_line(town, 30);
+                // Miasto
+                printf(COLOR_YELLOW "Current town: %s\n" COLOR_RESET, current->address.town);
+                printf(COLOR_BOLD "Enter new town (leave blank to keep current): " COLOR_RESET);
+                get_line(town, 30);
 
-            // Aktualizacja danych, jeśli zostały wprowadzone
-            check_to_change(current->name, name);
-            check_to_change(current->last_name, last_name);
-            check_to_change(current->phone_number, phone_number);
-            check_to_change(current->address.street, street);
-            check_to_change(current->address.nr, nr);
-            check_to_change(current->address.post_code, post_code);
-            check_to_change(current->address.town, town);
+                // Aktualizacja danych, jeśli zostały wprowadzone
+                check_to_change(current->name, name);
+                check_to_change(current->last_name, last_name);
+                check_to_change(current->phone_number, phone_number);
+                check_to_change(current->address.street, street);
+                check_to_change(current->address.nr, nr);
+                check_to_change(current->address.post_code, post_code);
+                check_to_change(current->address.town, town);
 
-            //save_contacts_to_file(head, "contacts.csv");
-            printf(COLOR_GREEN "Contact edited successfully.\n" COLOR_RESET);
-            return;
+                //save_contacts_to_file(head, "contacts.csv");
+                printf(COLOR_GREEN "Contact edited successfully.\n" COLOR_RESET);
+                return;
+            }
+            current = current->next;
         }
-        current = current->next;
+
+        // Nie znaleziono kontaktu o podanym ID
+        printf(COLOR_BLUE "Contact with ID %d not found.\n" COLOR_RESET, id);  
     }
 
-    // Nie znaleziono kontaktu o podanym ID
-    printf(COLOR_BLUE "Contact with ID %d not found.\n" COLOR_RESET, id);
+    // Lista jest pusta
+    printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
 
 }
 
 void delete_contact_from_user(Contacts **head) {
-    int id;
-    printf(COLOR_BOLD "Enter ID of contact to delete: " COLOR_RESET);
-    scanf("%d", &id);
+    if(NULL != *head){
+        int id;
+        printf(COLOR_BOLD "Enter ID of contact to delete: " COLOR_RESET);
+        scanf("%d", &id);
 
-    Contacts *current = *head;
-    Contacts *prev = NULL;
+        Contacts *current = *head;
+        Contacts *prev = NULL;
 
-    // Przeszukiwanie listy w poszukiwaniu kontaktu o podanym indeksie
-    while (current != NULL && current->id != id) {
-        prev = current;
-        current = current->next;
-    }
-
-    // Jesli kontakt o podanym indeksie zostal znaleziony
-    if (current != NULL) {
-        // Jesli kontakt jest na poczatku listy
-        if (prev == NULL) {
-            *head = current->next;
-        } else {
-            prev->next = current->next;
+        // Przeszukiwanie listy w poszukiwaniu kontaktu o podanym indeksie
+        while (current != NULL && current->id != id) {
+            prev = current;
+            current = current->next;
         }
-        free(current);
-        printf(COLOR_GREEN "Contact deleted successfully.\n" COLOR_RESET);
-    } else {
-        printf(COLOR_BLUE "Contact with ID %d not found.\n" COLOR_RESET, id);
+
+        // Jesli kontakt o podanym indeksie zostal znaleziony
+        if (current != NULL) {
+            // Jesli kontakt jest na poczatku listy
+            if (prev == NULL) {
+                *head = current->next;
+            } else {
+                prev->next = current->next;
+            }
+            free(current);
+            printf(COLOR_GREEN "Contact deleted successfully.\n" COLOR_RESET);
+        } else {
+            printf(COLOR_BLUE "Contact with ID %d not found.\n" COLOR_RESET, id);
+        }
+        getchar();
     }
-    getchar();
+
+    // Lista jest pusta
+    printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
 }
 
 void execute_option(Contacts **head, int option) {
