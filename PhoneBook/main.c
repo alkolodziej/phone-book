@@ -12,11 +12,11 @@ int main() {
         option = get_user_choice();
         clear_screen();
         execute_option(&head, option);
-        if(option!=5) printf("\nPress enter to continue...\n");
+        if(option!=0) printf("\nPress enter to continue...\n");
         getchar();
         save_contacts_to_file(head, "contacts.csv");
         clear_screen();
-    } while(option != 5);
+    } while(option != 0);
 
     // debug
 

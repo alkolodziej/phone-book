@@ -11,5 +11,6 @@ void check_to_change(char *first, char *second);
 void edit_contact_from_user(Contacts *head);
 void delete_contact_from_user(Contacts **head);
 void execute_option(Contacts **head, int option);
+void search_contact_from_user(const Contacts *head);
 
 #endif // MENU_H_INCLUDED

@@ -29,7 +29,8 @@ void display_menu() {
     printf("2. Add contact\n");
     printf("3. Edit contact\n");
     printf("4. Delete contact\n");
-    printf(COLOR_BLUE "5. Exit\n" COLOR_RESET);
+    printf("5. Search contact\n");
+    printf(COLOR_BLUE "0. Exit\n" COLOR_RESET);
     printf(COLOR_BOLD "****************************\n" COLOR_RESET);
 }
 
@@ -232,8 +233,115 @@ void delete_contact_from_user(Contacts **head) {
     printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
 }
 
+void print_contact(const Contacts *contact) {
+    printf(COLOR_GREEN "Contact found:\n" COLOR_RESET);
+    printf("ID: %d\n", contact->id);
+    printf("Name: %s\n", contact->name);
+    printf("Last Name: %s\n", contact->last_name);
+    printf("Phone Number: %s\n", contact->phone_number);
+    printf("Street: %s\n", contact->address.street);
+    printf("House Number: %s\n", contact->address.nr);
+    printf("Post Code: %s\n", contact->address.post_code);
+    printf("Town: %s\n", contact->address.town);
+    getchar();
+}
+
+
+
+void search_contact_from_user(const Contacts *head) {
+    if (head == NULL) {
+        printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
+        return;
+    }
+
+    int choice;
+    char search_value[60];
+    printf(COLOR_BOLD "Choose the field to search:\n" COLOR_RESET);
+    printf("1. Name + Last Name\n");
+    printf("2. Phone Number\n");
+    printf("3. City\n");
+    printf("4. Post Code\n");
+    printf("5. Return to menu\n");
+    printf(COLOR_BOLD "Enter your choice: " COLOR_RESET);
+    scanf("%d", &choice);
+    getchar(); // Clear input buffer
+
+    switch (choice) {
+        case 1:
+            printf(COLOR_BOLD "Enter name and last name to search: " COLOR_RESET);
+            break;
+        case 2:
+            printf(COLOR_BOLD "Enter phone number to search: " COLOR_RESET);
+            break;
+        case 3:
+            printf(COLOR_BOLD "Enter city to search: " COLOR_RESET);
+            break;
+        case 4:
+            printf(COLOR_BOLD "Enter post code to search: " COLOR_RESET);
+            break;
+        case 5:
+            return; // Return to main menu
+        default:
+            printf(COLOR_RED "Invalid option.\n" COLOR_RESET);
+            return;
+    }
+
+    get_line(search_value, sizeof(search_value));
+
+    const Contacts *current = head;
+    while (current != NULL) {
+        switch (choice) {
+            case 1: {
+                char temp_name[60];
+                strcpy(temp_name, current->name); // Kopiujemy imię do bufora
+                strcat(temp_name, " "); // Dołączamy spację
+                strcat(temp_name, current->last_name); // Dołączamy nazwisko
+
+                if (strcmp(temp_name, search_value) == 0) {
+                    print_contact(current);
+                    return;
+                }
+                break;
+            }
+            case 2:
+                if (strcmp(current->phone_number, search_value) == 0) {
+                    print_contact(current);
+                    return;
+                }
+                break;
+            case 3:
+                if (strcmp(current->address.town, search_value) == 0) {
+                    print_contact(current);
+                    return;
+                }
+                break;
+            case 4:
+                if (strcmp(current->address.post_code, search_value) == 0) {
+                    print_contact(current);
+                    return;
+                }
+                break;
+        }
+        current = current->next;
+    }
+
+    printf(COLOR_BLUE "No contact found.\n" COLOR_RESET);
+    getchar();
+}
+
+
+
+
+
+
+
+
 void execute_option(Contacts **head, int option) {
     switch(option) {
+        case 0:
+            printf(COLOR_BOLD "Exiting program.\n" COLOR_RESET);
+            exit(0);
+            break;
         case 1:
             display_list(*head);
             break;
@@ -247,8 +355,7 @@ void execute_option(Contacts **head, int option) {
             delete_contact_from_user(head);
             break;
         case 5:
-            printf(COLOR_BOLD "Exiting program.\n" COLOR_RESET);
-            exit(0);
+            search_contact_from_user(*head);
             break;
         default:
             printf(COLOR_RED "Invalid option.\n" COLOR_RESET);
