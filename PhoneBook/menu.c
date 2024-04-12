@@ -5,16 +5,6 @@
 #include "contacts.h"
 #include "colors.h"
 
-#define COLUMN_WIDTH_ID 10
-#define COLUMN_WIDTH_NAME 32
-#define COLUMN_WIDTH_LAST_NAME 32
-#define COLUMN_WIDTH_PHONE_NUMBER 15
-#define COLUMN_WIDTH_STREET 32
-#define COLUMN_WIDTH_NR 7
-#define COLUMN_WIDTH_POST_CODE 10
-#define COLUMN_WIDTH_TOWN 31
-
-
 // Definicja makra do czyszczenia ekranu w zależności od systemu operacyjnego
 #ifdef _WIN32
 #define CLEAR_SCREEN "cls"

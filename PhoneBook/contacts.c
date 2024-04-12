@@ -6,15 +6,6 @@
 #include "colors.h"
 #include "menu.h"
 
-#define COLUMN_WIDTH_ID 10
-#define COLUMN_WIDTH_NAME 32
-#define COLUMN_WIDTH_LAST_NAME 32
-#define COLUMN_WIDTH_PHONE_NUMBER 15
-#define COLUMN_WIDTH_STREET 32
-#define COLUMN_WIDTH_NR 7
-#define COLUMN_WIDTH_POST_CODE 10
-#define COLUMN_WIDTH_TOWN 31
-
 void save_contacts_to_file(Contacts *head, const char *filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {

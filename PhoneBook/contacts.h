@@ -1,6 +1,15 @@
 #ifndef CONTACTS_H_INCLUDED
 #define CONTACTS_H_INCLUDED
 
+#define COLUMN_WIDTH_ID 10
+#define COLUMN_WIDTH_NAME 32
+#define COLUMN_WIDTH_LAST_NAME 32
+#define COLUMN_WIDTH_PHONE_NUMBER 15
+#define COLUMN_WIDTH_STREET 32
+#define COLUMN_WIDTH_NR 7
+#define COLUMN_WIDTH_POST_CODE 10
+#define COLUMN_WIDTH_TOWN 31
+
 typedef struct Address {
   char street[30];
   char nr[6];
