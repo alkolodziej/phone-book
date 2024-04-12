@@ -38,7 +38,7 @@ void display_menu() {
 void get_line(char *line, size_t size) {
     fgets(line, (int)size, stdin);
     line[strcspn(line, "\n")] = '\0'; // Usunięcie znaku nowej linii
-
+    
     // Sprawdzenie, czy długość wczytanej linii jest równa maksymalnemu rozmiarowi tablicy
     if (strlen(line) == size - 1) {
         // Czyszczenie bufora wejściowego
@@ -258,14 +258,14 @@ void search_contact_from_user(const Contacts *head) {
     int choice = 0;
     char search_value[30];
     printf(COLOR_BOLD "Choose the field to search:\n" COLOR_RESET);
-    printf("1. Name \n");
+    printf(COLOR_YELLOW "1. Name \n");
     printf("2. Last Name\n");
     printf("3. Phone Number\n");
     printf("4. Street\n");
     printf("5. House Number\n");
     printf("6. City\n");
-    printf("7. Post Code\n");
-    printf("0. Return to menu\n");
+    printf("7. Post Code\n" COLOR_RESET);
+    printf(COLOR_BLUE "0. Return to menu\n" COLOR_RESET);
 
     do{
         choice = get_user_choice();

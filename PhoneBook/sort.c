@@ -66,6 +66,7 @@ void mergeSort(Contacts **headRef, Comparator comp, int order) {
 
     // Base case: empty or single element list, no need to sort
     if (head == NULL || head->next == NULL) {
+        //printf(COLOR_BLUE "Lista jest pusta lub ma 1 element." COLOR_RESET);
         return;
     }
 
