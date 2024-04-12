@@ -36,16 +36,19 @@ void display_menu() {
 }
 
 void get_line(char *line, size_t size) {
-    fgets(line, (int)size, stdin);
-    line[strcspn(line, "\n")] = '\0'; // Usunięcie znaku nowej linii
-    
-    // Sprawdzenie, czy długość wczytanej linii jest równa maksymalnemu rozmiarowi tablicy
-    if (strlen(line) == size - 1) {
-        // Czyszczenie bufora wejściowego
-        int ch;
-        while ((ch = getchar()) != '\n' && ch != EOF);
-    }
+    do {
+        fgets(line, (int)size, stdin);
+        line[strcspn(line, "\n")] = '\0'; // Usunięcie znaku nowej linii
+
+        // Sprawdzenie, czy długość wczytanej linii jest równa maksymalnemu rozmiarowi tablicy
+        if (strlen(line) == size - 1) {
+            // Czyszczenie bufora wejściowego
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF);
+        }
+    } while (strlen(line) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
 }
+
 
 void add_contact_from_user(Contacts **head) {
     char name[30], last_name[30], phone_number[10];
@@ -249,14 +252,8 @@ void print_header(int total_width)
     print_separator(total_width);
 }
 
-void search_contact_from_user(const Contacts *head) {
-    if (head == NULL) {
-        printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
-        return;
-    }
-
-    int choice = 0;
-    char search_value[30];
+void print_search_menu()
+{
     printf(COLOR_BOLD "Choose the field to search:\n" COLOR_RESET);
     printf(COLOR_YELLOW "1. Name \n");
     printf("2. Last Name\n");
@@ -266,6 +263,18 @@ void search_contact_from_user(const Contacts *head) {
     printf("6. City\n");
     printf("7. Post Code\n" COLOR_RESET);
     printf(COLOR_BLUE "0. Return to menu\n" COLOR_RESET);
+}
+
+void search_contact_from_user(const Contacts *head) {
+    if (head == NULL) {
+        printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
+        return;
+    }
+
+    int choice = 0;
+    char search_value[30];
+
+    print_search_menu();
 
     do{
         choice = get_user_choice();
@@ -304,62 +313,75 @@ void search_contact_from_user(const Contacts *head) {
     int total_width = COLUMN_WIDTH_ID + COLUMN_WIDTH_NAME + COLUMN_WIDTH_LAST_NAME +
                       COLUMN_WIDTH_PHONE_NUMBER + COLUMN_WIDTH_STREET + COLUMN_WIDTH_NR +
                       COLUMN_WIDTH_POST_CODE + COLUMN_WIDTH_TOWN + 8 * 2 - 1; // X * Y ; X - ilość kolumn, Y - szerokość kolumny z "| "
-
-    print_header(total_width);
-
+    
     const Contacts *current = head;
     int found = 0;
     while (current != NULL) {
         switch (choice) {
             case 1:
                 if (strcasecmp(current->name, search_value) == 0){
+                    found++;
+                    if(found == 1)
+                        print_header(total_width);
                     print_contact(current);
-                    found = 1;
                 }
                 break;
             case 2:
                 if (strcasecmp(current->last_name, search_value) == 0){
+                    found++;
+                    if(found == 1)
+                        print_header(total_width);
                     print_contact(current);
-                    found = 1;
                 }
                 break;
             case 3:
                 if (strcasecmp(current->phone_number, search_value) == 0){
+                    found++;
+                    if(found == 1)
+                        print_header(total_width);
                     print_contact(current);
-                    found = 1;
                 }
                 break;
             case 4:
                 if (strcasecmp(current->address.street, search_value) == 0){
+                    found++;
+                    if(found == 1)
+                        print_header(total_width);
                     print_contact(current);
-                    found = 1;
                 }
                 break;
             case 5:
                 if (strcasecmp(current->address.nr, search_value) == 0){
+                    found++;
+                    if(found == 1)
+                        print_header(total_width);
                     print_contact(current);
-                    found = 1;
                 }
                 break;
             case 6:
                 if (strcasecmp(current->address.town, search_value) == 0){
+                    found++;
+                    if(found == 1)
+                        print_header(total_width);
                     print_contact(current);
-                    found = 1;
                 }
                 break;
             case 7:
                 if (strcasecmp(current->address.post_code, search_value) == 0){
+                    found++;
+                    if(found == 1)
+                        print_header(total_width);
                     print_contact(current);
-                    found = 1;
                 }
                 break;
         }
         current = current->next;
     }
-    print_separator(total_width);
 
     if (!found) {
         printf(COLOR_BLUE "No contact found.\n" COLOR_RESET);
+    }else{
+        print_separator(total_width);
     }
 }
 
