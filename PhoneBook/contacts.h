@@ -17,25 +17,12 @@ typedef struct Contacts {
   struct Contacts *next;
 } Contacts;
 
-typedef int (*Comparator)(const Contacts *, const Contacts *);
-
 void save_contacts_to_file(Contacts *head, const char *filename);
 void load_contacts_from_file(Contacts **head, const char *filename);
 void print_separator(int total_width);
-Contacts *merge(Contacts *a, Contacts *b, Comparator comp);
-void split(Contacts *source, Contacts **frontRef, Contacts **backRef);
-void mergeSort(Contacts **headRef, Comparator comp);
-int compareByID(const Contacts *a, const Contacts *b);
-int compareByName(const Contacts *a, const Contacts *b);
-int compareByLastName(const Contacts *a, const Contacts *b);
-int compareByPhoneNumber(const Contacts *a, const Contacts *b);
-int compareByStreet(const Contacts *a, const Contacts *b);
-int compareByNr(const Contacts *a, const Contacts *b);
-int compareByPostCode(const Contacts *a, const Contacts *b);
-int compareByTown(const Contacts *a, const Contacts *b);
 void display_sorting_menu();
-Comparator get_comparator(int sorting_mode);
 void display_list(Contacts **headRef);
+void free_contacts_list(Contacts *head);
 
 
 #endif // CONTACTS_H_INCLUDED

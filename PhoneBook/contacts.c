@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "contacts.h"
+#include "sort.h"
 #include "colors.h"
 #include "menu.h"
 
@@ -13,8 +14,6 @@
 #define COLUMN_WIDTH_NR 7
 #define COLUMN_WIDTH_POST_CODE 10
 #define COLUMN_WIDTH_TOWN 31
-
-typedef int (*Comparator)(const Contacts *, const Contacts *);
 
 void save_contacts_to_file(Contacts *head, const char *filename) {
     FILE *file = fopen(filename, "w");
@@ -89,119 +88,6 @@ void print_separator(int total_width) {
     putchar('\n');
 }
 
-// Merges two sorted lists into one
-Contacts *merge(Contacts *a, Contacts *b, Comparator comp) {
-    Contacts *result = NULL;
-
-    // Base cases: if either list is empty, return the other list
-    if (a == NULL) {
-        return b;
-    } else if (b == NULL) {
-        return a;
-    }
-
-    // Compare the elements of the two lists and merge them accordingly
-    if (comp(a, b) <= 0) {
-        result = a;
-        result->next = merge(a->next, b, comp);
-    } else {
-        result = b;
-        result->next = merge(a, b->next, comp);
-    }
-
-    return result;
-}
-
-// Splits the list into two sublists
-void split(Contacts *source, Contacts **frontRef, Contacts **backRef) {
-    Contacts *fast;
-    Contacts *slow;
-
-    if (source == NULL || source->next == NULL) {
-        *frontRef = source;
-        *backRef = NULL;
-    } else {
-        slow = source;
-        fast = source->next;
-
-        // Advance 'fast' two nodes and advance 'slow' one node
-        while (fast != NULL) {
-            fast = fast->next;
-            if (fast != NULL) {
-                slow = slow->next;
-                fast = fast->next;
-            }
-        }
-
-        // 'slow' is before the midpoint, split the list in two at that point
-        *frontRef = source;
-        *backRef = slow->next;
-        slow->next = NULL;
-    }
-}
-
-// Sorts the linked list using Merge Sort
-void mergeSort(Contacts **headRef, Comparator comp) {
-    Contacts *head = *headRef;
-    Contacts *a;
-    Contacts *b;
-
-    // Base case: empty or single element list, no need to sort
-    if (head == NULL || head->next == NULL) {
-        return;
-    }
-
-    // Split head into 'a' and 'b' sublists
-    split(head, &a, &b);
-
-    // Recursively sort the sublists
-    mergeSort(&a, comp);
-    mergeSort(&b, comp);
-
-    // Merge the sorted sublists
-    *headRef = merge(a, b, comp);
-}
-
-// Comparison function for sorting by ID
-int compareByID(const Contacts *a, const Contacts *b) {
-    return a->id - b->id;
-}
-
-// Comparison function for sorting by name
-int compareByName(const Contacts *a, const Contacts *b) {
-    return strcasecmp(a->name, b->name);
-}
-
-// Comparison function for sorting by last name
-int compareByLastName(const Contacts *a, const Contacts *b) {
-    return strcasecmp(a->last_name, b->last_name);
-}
-
-// Comparison function for sorting by phone number
-int compareByPhoneNumber(const Contacts *a, const Contacts *b) {
-    return strcasecmp(a->phone_number, b->phone_number);
-}
-
-// Comparison function for sorting by street
-int compareByStreet(const Contacts *a, const Contacts *b) {
-    return strcasecmp(a->address.street, b->address.street);
-}
-
-// Comparison function for sorting by house number
-int compareByNr(const Contacts *a, const Contacts *b) {
-    return strcasecmp(a->address.nr, b->address.nr);
-}
-
-// Comparison function for sorting by post code
-int compareByPostCode(const Contacts *a, const Contacts *b) {
-    return strcasecmp(a->address.post_code, b->address.post_code);
-}
-
-// Comparison function for sorting by town
-int compareByTown(const Contacts *a, const Contacts *b) {
-    return strcasecmp(a->address.town, b->address.town);
-}
-
 void display_sorting_menu() {
     printf(COLOR_BOLD "SORTING MENU:\n" COLOR_RESET);
     printf(COLOR_YELLOW "1. Sort by ID (default)\n");
@@ -213,29 +99,17 @@ void display_sorting_menu() {
     printf(COLOR_BLUE "0. Back to main menu\n" COLOR_RESET);
 }
 
-// Funkcja zwracająca odpowiednią funkcję porównującą na podstawie wyboru użytkownika
-Comparator get_comparator(int sorting_mode) {
-    switch (sorting_mode) {
-        case 1:
-            return compareByID;
-        case 2:
-            return compareByName;
-        case 3:
-            return compareByLastName;
-        case 4:
-            return compareByPhoneNumber;
-        case 5:
-            return compareByTown;
-        case 6:
-            return compareByPostCode;
-        default:
-            return compareByID; // Default sorting mode
-    }
+void display_ascending_descending_menu(){
+    printf(COLOR_BOLD "SELECT SORTING ORDER:\n" COLOR_RESET);
+    printf(COLOR_YELLOW "1. Ascending\n");
+    printf("2. Descending\n" COLOR_RESET);
+    printf(COLOR_BLUE "3. Cancel\n" COLOR_RESET);
 }
 
 void display_list(Contacts **headRef) {
     Contacts *head = *headRef;
     int sorting_mode = 1;
+    int order = 1;
 
     do {
         clear_screen();
@@ -247,9 +121,9 @@ void display_list(Contacts **headRef) {
 
         // Sortowanie listy kontaktów
         if (sorting_mode > 0 && sorting_mode < 7)
-            mergeSort(headRef, get_comparator(sorting_mode));
+            mergeSort(headRef, get_comparator(sorting_mode), order);
         else
-            mergeSort(headRef, compareByID);
+            mergeSort(headRef, compareByID, 1);
 
         // Obliczanie całkowitej szerokości separatora
         int total_width = COLUMN_WIDTH_ID + COLUMN_WIDTH_NAME + COLUMN_WIDTH_LAST_NAME +
@@ -283,6 +157,29 @@ void display_list(Contacts **headRef) {
 
         display_sorting_menu();
         sorting_mode = get_user_choice(); // Update sorting mode for the next iteration
+        if (sorting_mode >= 1 && sorting_mode <= 6) {
+            display_ascending_descending_menu();
+            do {
+                int order_choice = get_user_choice();
+                if (order_choice == 2) {
+                    order = -1; // Set order to descending
+                } else {
+                    order = 1; // Default to ascending order
+                }
+                if(order_choice == 3){
+                    break;
+                }
+            }while(order != 1 && order != -1);
+        }
     } while (sorting_mode != 0);
-    mergeSort(headRef, compareByID);
+    mergeSort(headRef, compareByID, 1);
+}
+
+void free_contacts_list(Contacts *head) {
+    Contacts *current = head;
+    while (current != NULL) {
+        Contacts *temp = current;
+        current = current->next;
+        free(temp);
+    }
 }
