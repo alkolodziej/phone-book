@@ -12,5 +12,7 @@ void edit_contact_from_user(Contacts *head);
 void delete_contact_from_user(Contacts **head);
 void execute_option(Contacts **head, int option);
 void search_contact_from_user(const Contacts *head);
+void print_contact(const Contacts *contact);
+void print_header(int total_width);
 
 #endif // MENU_H_INCLUDED

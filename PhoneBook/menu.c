@@ -5,6 +5,16 @@
 #include "contacts.h"
 #include "colors.h"
 
+#define COLUMN_WIDTH_ID 10
+#define COLUMN_WIDTH_NAME 32
+#define COLUMN_WIDTH_LAST_NAME 32
+#define COLUMN_WIDTH_PHONE_NUMBER 15
+#define COLUMN_WIDTH_STREET 32
+#define COLUMN_WIDTH_NR 7
+#define COLUMN_WIDTH_POST_CODE 10
+#define COLUMN_WIDTH_TOWN 31
+
+
 // Definicja makra do czyszczenia ekranu w zależności od systemu operacyjnego
 #ifdef _WIN32
 #define CLEAR_SCREEN "cls"
@@ -230,19 +240,24 @@ void delete_contact_from_user(Contacts **head) {
 }
 
 void print_contact(const Contacts *contact) {
-    printf(COLOR_GREEN "Contact found:\n" COLOR_RESET);
-    printf("ID: %d\n", contact->id);
-    printf("Name: %s\n", contact->name);
-    printf("Last Name: %s\n", contact->last_name);
-    printf("Phone Number: %s\n", contact->phone_number);
-    printf("Street: %s\n", contact->address.street);
-    printf("House Number: %s\n", contact->address.nr);
-    printf("Post Code: %s\n", contact->address.post_code);
-    printf("Town: %s\n", contact->address.town);
-    getchar();
+    printf("| %-*d| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s|\n",
+               COLUMN_WIDTH_ID, contact->id, COLUMN_WIDTH_NAME, contact->name, COLUMN_WIDTH_LAST_NAME, contact->last_name,
+               COLUMN_WIDTH_PHONE_NUMBER, contact->phone_number, COLUMN_WIDTH_STREET, contact->address.street,
+               COLUMN_WIDTH_NR, contact->address.nr, COLUMN_WIDTH_POST_CODE, contact->address.post_code,
+               COLUMN_WIDTH_TOWN, contact->address.town);
 }
 
+void print_header(int total_width)
+{
+    print_separator(total_width);
 
+    printf(COLOR_BOLD "| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s|\n" COLOR_RESET,
+           COLUMN_WIDTH_ID, "ID", COLUMN_WIDTH_NAME, "Name", COLUMN_WIDTH_LAST_NAME, "Last Name",
+           COLUMN_WIDTH_PHONE_NUMBER, "Phone Number", COLUMN_WIDTH_STREET, "Street", COLUMN_WIDTH_NR, "Nr",
+           COLUMN_WIDTH_POST_CODE, "Post Code", COLUMN_WIDTH_TOWN, "Town");
+
+    print_separator(total_width);
+}
 
 void search_contact_from_user(const Contacts *head) {
     if (head == NULL) {
@@ -250,86 +265,113 @@ void search_contact_from_user(const Contacts *head) {
         return;
     }
 
-    int choice;
-    char search_value[60];
+    int choice = 0;
+    char search_value[30];
     printf(COLOR_BOLD "Choose the field to search:\n" COLOR_RESET);
-    printf("1. Name + Last Name\n");
-    printf("2. Phone Number\n");
-    printf("3. City\n");
-    printf("4. Post Code\n");
-    printf("5. Return to menu\n");
-    choice = get_user_choice();
-    getchar(); // Clear input buffer
+    printf("1. Name \n");
+    printf("2. Last Name\n");
+    printf("3. Phone Number\n");
+    printf("4. Street\n");
+    printf("5. House Number\n");
+    printf("6. City\n");
+    printf("7. Post Code\n");
+    printf("0. Return to menu\n");
+
+    do{
+        choice = get_user_choice();
 
     switch (choice) {
         case 1:
-            printf(COLOR_BOLD "Enter name and last name to search: " COLOR_RESET);
+            printf(COLOR_BOLD "Enter name to search: " COLOR_RESET);
             break;
         case 2:
-            printf(COLOR_BOLD "Enter phone number to search: " COLOR_RESET);
+            printf(COLOR_BOLD "Enter last name to search: " COLOR_RESET);
             break;
         case 3:
-            printf(COLOR_BOLD "Enter city to search: " COLOR_RESET);
+            printf(COLOR_BOLD "Enter phone number to search: " COLOR_RESET);
             break;
         case 4:
-            printf(COLOR_BOLD "Enter post code to search: " COLOR_RESET);
+            printf(COLOR_BOLD "Enter street to search: " COLOR_RESET);
             break;
         case 5:
+            printf(COLOR_BOLD "Enter house number to search: " COLOR_RESET);
+            break;
+        case 6:
+            printf(COLOR_BOLD "Enter city to search: " COLOR_RESET);
+            break;
+        case 7:
+            printf(COLOR_BOLD "Enter post code to search: " COLOR_RESET);
+            break;
+        case 0:
             return; // Return to main menu
         default:
             printf(COLOR_RED "Invalid option.\n" COLOR_RESET);
-            return;
     }
+    }while(choice>7 || choice<0);
 
     get_line(search_value, sizeof(search_value));
 
+    int total_width = COLUMN_WIDTH_ID + COLUMN_WIDTH_NAME + COLUMN_WIDTH_LAST_NAME +
+                      COLUMN_WIDTH_PHONE_NUMBER + COLUMN_WIDTH_STREET + COLUMN_WIDTH_NR +
+                      COLUMN_WIDTH_POST_CODE + COLUMN_WIDTH_TOWN + 8 * 2 - 1; // X * Y ; X - ilość kolumn, Y - szerokość kolumny z "| "
+
+    print_header(total_width);
+
     const Contacts *current = head;
+    int found = 0;
     while (current != NULL) {
         switch (choice) {
-            case 1: {
-                char temp_name[60];
-                strcpy(temp_name, current->name); // Kopiujemy imię do bufora
-                strcat(temp_name, " "); // Dołączamy spację
-                strcat(temp_name, current->last_name); // Dołączamy nazwisko
-
-                if (strcmp(temp_name, search_value) == 0) {
+            case 1:
+                if (strcasecmp(current->name, search_value) == 0){
                     print_contact(current);
-                    return;
+                    found = 1;
                 }
                 break;
-            }
             case 2:
-                if (strcmp(current->phone_number, search_value) == 0) {
+                if (strcasecmp(current->last_name, search_value) == 0){
                     print_contact(current);
-                    return;
+                    found = 1;
                 }
                 break;
             case 3:
-                if (strcmp(current->address.town, search_value) == 0) {
+                if (strcasecmp(current->phone_number, search_value) == 0){
                     print_contact(current);
-                    return;
+                    found = 1;
                 }
                 break;
             case 4:
-                if (strcmp(current->address.post_code, search_value) == 0) {
+                if (strcasecmp(current->address.street, search_value) == 0){
                     print_contact(current);
-                    return;
+                    found = 1;
+                }
+                break;
+            case 5:
+                if (strcasecmp(current->address.nr, search_value) == 0){
+                    print_contact(current);
+                    found = 1;
+                }
+                break;
+            case 6:
+                if (strcasecmp(current->address.town, search_value) == 0){
+                    print_contact(current);
+                    found = 1;
+                }
+                break;
+            case 7:
+                if (strcasecmp(current->address.post_code, search_value) == 0){
+                    print_contact(current);
+                    found = 1;
                 }
                 break;
         }
         current = current->next;
     }
+    print_separator(total_width);
 
-    printf(COLOR_BLUE "No contact found.\n" COLOR_RESET);
-    getchar();
+    if (!found) {
+        printf(COLOR_BLUE "No contact found.\n" COLOR_RESET);
+    }
 }
-
-
-
-
-
-
-
 
 void execute_option(Contacts **head, int option) {
     switch(option) {

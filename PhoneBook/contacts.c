@@ -5,7 +5,7 @@
 #include "colors.h"
 #include "menu.h"
 
-#define COLUMN_WIDTH_ID 7
+#define COLUMN_WIDTH_ID 10
 #define COLUMN_WIDTH_NAME 32
 #define COLUMN_WIDTH_LAST_NAME 32
 #define COLUMN_WIDTH_PHONE_NUMBER 15
@@ -191,12 +191,12 @@ void display_list(const Contacts *head, int sorting_mode) {
         return;
     }
 
-    // Sortowanie listy kontaktów
+    /*// Sortowanie listy kontaktów
     if(sorting_mode>0 && sorting_mode<7)
         sort_contacts(head, sorting_mode);
     else
         sort_contacts(head, 1);
-
+*/
     // Obliczanie całkowitej szerokości separatora
     int total_width = COLUMN_WIDTH_ID + COLUMN_WIDTH_NAME + COLUMN_WIDTH_LAST_NAME +
                       COLUMN_WIDTH_PHONE_NUMBER + COLUMN_WIDTH_STREET + COLUMN_WIDTH_NR +
@@ -226,7 +226,7 @@ void display_list(const Contacts *head, int sorting_mode) {
 
     print_separator(total_width);
 
-
+/*
     display_sorting_menu();
     int sort_choice = get_user_choice();
     if(sort_choice>0 && sort_choice<7) {
@@ -240,6 +240,6 @@ void display_list(const Contacts *head, int sorting_mode) {
         getchar();
         clear_screen();
         display_list(head, 1);
-    }
+    }*/
 }
 
