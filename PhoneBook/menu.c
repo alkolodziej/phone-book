@@ -380,7 +380,7 @@ void execute_option(Contacts **head, int option) {
             exit(0);
             break;
         case 1:
-            display_list(*head, 1);
+            display_list(head);
             break;
         case 2:
             add_contact_from_user(head);
