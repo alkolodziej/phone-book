@@ -1,3 +1,7 @@
+/**
+ * @file menu.c
+ * @brief Implementation of functions related to the menu and contacts management.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,25 +10,40 @@
 #include "contacts.h"
 #include "colors.h"
 
-// Definicja makra do czyszczenia ekranu w zależności od systemu operacyjnego
+// Macro definition to clear the screen depending on the operating system
 #ifdef _WIN32
 #define CLEAR_SCREEN "cls"
 #else
 #define CLEAR_SCREEN "clear"
 #endif
 
+/**
+ * @brief Clear the terminal screen.
+ * 
+ * This function clears the terminal screen.
+ */
 void clear_screen() {
     system(CLEAR_SCREEN);
 }
 
+/**
+ * @brief Get user's choice from the menu.
+ * 
+ * @return User's choice.
+ */
 int get_user_choice() {
     int choice;
     printf(COLOR_BOLD "Enter your choice: " COLOR_RESET);
     scanf("%d", &choice);
-    getchar();
+    getchar(); // Clear input buffer
     return choice;
 }
 
+/**
+ * @brief Display the main menu.
+ * 
+ * This function displays the main menu options.
+ */
 void display_menu() {
     printf(COLOR_BOLD "*********** MENU ***********\n" COLOR_RESET);
     printf(COLOR_YELLOW "1. Display contacts\n");
@@ -36,24 +55,42 @@ void display_menu() {
     printf(COLOR_BOLD "****************************\n" COLOR_RESET);
 }
 
+/**
+ * @brief Get input line from the user.
+ * 
+ * @param line Buffer to store the input line.
+ * @param size Size of the buffer.
+ */
 void get_line(char *line, size_t size) {
-        fgets(line, (int)size, stdin);
-        line[strcspn(line, "\n")] = '\0'; // Usunięcie znaku nowej linii
+    fgets(line, (int)size, stdin);
+    line[strcspn(line, "\n")] = '\0'; // Remove newline character
 
-        // Sprawdzenie, czy długość wczytanej linii jest równa maksymalnemu rozmiarowi tablicy
-        if (strlen(line) == size - 1) {
-            // Czyszczenie bufora wejściowego
-            int ch;
-            while ((ch = getchar()) != '\n' && ch != EOF);
-        }
+    // Check if the length of the input line equals the maximum buffer size
+    if (strlen(line) == size - 1) {
+        // Clear the input buffer
+        int ch;
+        while ((ch = getchar()) != '\n' && ch != EOF);
+    }
 }
 
-void check_if_blank(char *line){
-    if(strlen(line) == 0)
+/**
+ * @brief Check if the input line is blank and replace it with a single space if so.
+ * 
+ * @param line Input line to check.
+ */
+void check_if_blank(char *line) {
+    if (strlen(line) == 0)
         strcpy(line, " ");
 }
 
-
+/**
+ * @brief Add a new contact based on user input.
+ * 
+ * This function prompts the user to input contact details such as name, last name,
+ * phone number, address, and adds the new contact to the linked list.
+ * 
+ * @param head Pointer to the pointer to the head of the contacts linked list.
+ */
 void add_contact_from_user(Contacts **head) {
     char name[30], last_name[30], phone_number[10];
     char street[30], nr[6], post_code[7], town[30];
@@ -128,6 +165,14 @@ void add_contact_from_user(Contacts **head) {
     printf(COLOR_GREEN "Contact added successfully.\n" COLOR_RESET);
 }
 
+/**
+ * @brief Check if the second string is not empty and update the first string.
+ * 
+ * This function checks if the second string is not empty, and if so, it updates the first string with the value of the second string.
+ * 
+ * @param first Pointer to the first string.
+ * @param second Pointer to the second string.
+ */
 void check_to_change(char *first, char *second)
 {
     if (strlen(second) > 0) {
@@ -135,6 +180,14 @@ void check_to_change(char *first, char *second)
     }
 }
 
+/**
+ * @brief Edit an existing contact based on user input.
+ * 
+ * This function prompts the user to input the ID of the contact to edit,
+ * then allows the user to modify the contact's details.
+ * 
+ * @param head Pointer to the head of the contacts linked list.
+ */
 void edit_contact_from_user(Contacts *head) {
     if(NULL != head){
         Contacts *current = head;
@@ -210,6 +263,14 @@ void edit_contact_from_user(Contacts *head) {
 
 }
 
+/**
+ * @brief Delete an existing contact based on user input.
+ * 
+ * This function prompts the user to input the ID of the contact to delete,
+ * then removes the contact from the linked list.
+ * 
+ * @param head Pointer to the pointer to the head of the contacts linked list.
+ */
 void delete_contact_from_user(Contacts **head) {
     if(NULL != *head){
         int id;
@@ -219,15 +280,15 @@ void delete_contact_from_user(Contacts **head) {
         Contacts *current = *head;
         Contacts *prev = NULL;
 
-        // Przeszukiwanie listy w poszukiwaniu kontaktu o podanym indeksie
+        // Search the list for the contact with the given ID
         while (current != NULL && current->id != id) {
             prev = current;
             current = current->next;
         }
 
-        // Jesli kontakt o podanym indeksie zostal znaleziony
+        // If the contact with the given ID has been found
         if (current != NULL) {
-            // Jesli kontakt jest na poczatku listy
+            // If the contact is at the beginning of the list
             if (prev == NULL) {
                 *head = current->next;
             } else {
@@ -240,10 +301,17 @@ void delete_contact_from_user(Contacts **head) {
         }
         getchar();
     } else
-        // Lista jest pusta
+        // List is empty.
         printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
 }
 
+/**
+ * @brief Print the details of a contact.
+ * 
+ * This function prints the details (ID, name, last name, phone number, address) of a given contact.
+ * 
+ * @param contact Pointer to the contact whose details are to be printed.
+ */
 void print_contact(const Contacts *contact) {
     printf("| %-*d| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s| %-*s|\n",
                COLUMN_WIDTH_ID, contact->id, COLUMN_WIDTH_NAME, contact->name, COLUMN_WIDTH_LAST_NAME, contact->last_name,
@@ -252,6 +320,13 @@ void print_contact(const Contacts *contact) {
                COLUMN_WIDTH_TOWN, contact->address.town);
 }
 
+/**
+ * @brief Print the header for displaying contact details.
+ * 
+ * This function prints the header row for displaying contact details in a formatted table.
+ * 
+ * @param total_width Total width of the table.
+ */
 void print_header(int total_width)
 {
     print_separator(total_width);
@@ -264,6 +339,10 @@ void print_header(int total_width)
     print_separator(total_width);
 }
 
+// Function definition for print_search_menu
+/**
+ * @brief Print the menu for selecting the field to search.
+ */
 void print_search_menu()
 {
     printf(COLOR_BOLD "Choose the field to search:\n" COLOR_RESET);
@@ -277,20 +356,42 @@ void print_search_menu()
     printf(COLOR_BLUE "0. Return to menu\n" COLOR_RESET);
 }
 
+
+/**
+ * @brief Compare two strings partially, ignoring case.
+ * 
+ * This function compares two strings partially, character by character, ignoring case sensitivity.
+ * It returns 1 if str1 contains str2 as a substring, otherwise returns 0.
+ * 
+ * @param str1 Pointer to the first string.
+ * @param str2 Pointer to the second string.
+ * @return int Returns 1 if str1 contains str2 as a substring, otherwise returns 0.
+ */
 int strcasecmp_partial(const char *str1, const char *str2) {
+    // Loop through both strings until one of them reaches the end
     while (*str1 && *str2) {
+        // Compare characters of both strings, ignoring case
         if (tolower((unsigned char)*str1) != tolower((unsigned char)*str2))
-            return 0; // Zwróć 0, jeśli litery nie są równe
-        str1++;
-        str2++;
+            return 0; // Return 0 if characters are not equal
+        str1++; // Move to the next character in str1
+        str2++; // Move to the next character in str2
     }
 
-    if (*str2 == '\0') // Sprawdź, czy str2 został przeczytany do końca
-        return 1; // Zwróć true, jeśli str2 został sprawdzony do końca, co oznacza, że str1 zawiera str2 jako podciąg
+    // Check if str2 has been fully read
+    if (*str2 == '\0')
+        return 1; // Return true if str2 has been fully read, indicating str1 contains str2 as a substring
     else
-        return 0; // W przeciwnym przypadku zwróć false
+        return 0; // Return false if str2 has not been fully read
 }
 
+/**
+ * @brief Search for a contact based on user input.
+ * 
+ * This function allows the user to search for a contact by various fields such as name, last name, phone number, etc.
+ * It displays the contacts matching the search criteria.
+ * 
+ * @param head Pointer to the head of the contacts linked list.
+ */
 void search_contact_from_user(const Contacts *head) {
     if (head == NULL) {
         printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
@@ -412,6 +513,14 @@ void search_contact_from_user(const Contacts *head) {
     }
 }
 
+/**
+ * @brief Execute the selected option from the menu.
+ * 
+ * This function executes the appropriate action based on the user's menu choice.
+ * 
+ * @param head Pointer to the pointer to the head of the contacts linked list.
+ * @param option The option selected by the user.
+ */
 void execute_option(Contacts **head, int option) {
     switch(option) {
         case 0:
