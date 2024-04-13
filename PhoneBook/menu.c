@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "menu.h"
 #include "contacts.h"
 #include "colors.h"
@@ -132,7 +133,6 @@ void check_to_change(char *first, char *second)
     if (strlen(second) > 0) {
         strcpy(first, second);
     }
-    check_if_blank(first);
 }
 
 void edit_contact_from_user(Contacts *head) {
@@ -277,6 +277,20 @@ void print_search_menu()
     printf(COLOR_BLUE "0. Return to menu\n" COLOR_RESET);
 }
 
+int strcasecmp_partial(const char *str1, const char *str2) {
+    while (*str1 && *str2) {
+        if (tolower((unsigned char)*str1) != tolower((unsigned char)*str2))
+            return 0; // Zwróć 0, jeśli litery nie są równe
+        str1++;
+        str2++;
+    }
+
+    if (*str2 == '\0') // Sprawdź, czy str2 został przeczytany do końca
+        return 1; // Zwróć true, jeśli str2 został sprawdzony do końca, co oznacza, że str1 zawiera str2 jako podciąg
+    else
+        return 0; // W przeciwnym przypadku zwróć false
+}
+
 void search_contact_from_user(const Contacts *head) {
     if (head == NULL) {
         printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
@@ -332,7 +346,7 @@ void search_contact_from_user(const Contacts *head) {
     while (current != NULL) {
         switch (choice) {
             case 1:
-                if (strcasecmp(current->name, search_value) == 0){
+                if (strcasecmp_partial(current->name, search_value)){
                     found++;
                     if(found == 1)
                         print_header(total_width);
@@ -340,7 +354,7 @@ void search_contact_from_user(const Contacts *head) {
                 }
                 break;
             case 2:
-                if (strcasecmp(current->last_name, search_value) == 0){
+                if (strcasecmp_partial(current->last_name, search_value)){
                     found++;
                     if(found == 1)
                         print_header(total_width);
@@ -348,7 +362,7 @@ void search_contact_from_user(const Contacts *head) {
                 }
                 break;
             case 3:
-                if (strcasecmp(current->phone_number, search_value) == 0){
+                if (strcasecmp_partial(current->phone_number, search_value)){
                     found++;
                     if(found == 1)
                         print_header(total_width);
@@ -356,7 +370,7 @@ void search_contact_from_user(const Contacts *head) {
                 }
                 break;
             case 4:
-                if (strcasecmp(current->address.street, search_value) == 0){
+                if (strcasecmp_partial(current->address.street, search_value)){
                     found++;
                     if(found == 1)
                         print_header(total_width);
@@ -364,7 +378,7 @@ void search_contact_from_user(const Contacts *head) {
                 }
                 break;
             case 5:
-                if (strcasecmp(current->address.nr, search_value) == 0){
+                if (strcasecmp_partial(current->address.nr, search_value)){
                     found++;
                     if(found == 1)
                         print_header(total_width);
@@ -372,7 +386,7 @@ void search_contact_from_user(const Contacts *head) {
                 }
                 break;
             case 6:
-                if (strcasecmp(current->address.town, search_value) == 0){
+                if (strcasecmp_partial(current->address.town, search_value)){
                     found++;
                     if(found == 1)
                         print_header(total_width);
@@ -380,7 +394,7 @@ void search_contact_from_user(const Contacts *head) {
                 }
                 break;
             case 7:
-                if (strcasecmp(current->address.post_code, search_value) == 0){
+                if (strcasecmp_partial(current->address.post_code, search_value)){
                     found++;
                     if(found == 1)
                         print_header(total_width);

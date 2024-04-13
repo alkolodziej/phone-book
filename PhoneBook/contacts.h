@@ -30,6 +30,7 @@ void save_contacts_to_file(Contacts *head, const char *filename);
 void load_contacts_from_file(Contacts **head, const char *filename);
 void print_separator(int total_width);
 void display_sorting_menu();
+void display_ascending_descending_menu();
 void display_list(Contacts **headRef);
 void free_contacts_list(Contacts *head);
 
