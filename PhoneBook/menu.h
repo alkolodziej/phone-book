@@ -2,6 +2,7 @@
 #define MENU_H_INCLUDED
 
 #include "contacts.h"
+#include <stdio.h>
 
 // Function declarations for menu operations
 
