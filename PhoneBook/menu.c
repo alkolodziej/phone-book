@@ -63,51 +63,37 @@ void add_contact_from_user(Contacts **head) {
     // getchar();
     // Imię
     printf(COLOR_BOLD "Enter name: " COLOR_RESET);
-    do{
-        get_line(name, sizeof(name));
-    } while (strlen(name) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
+    get_line(name, sizeof(name));
     strcpy(new_contact->name, name);
 
     // Nazwisko
     printf(COLOR_BOLD "Enter last name: " COLOR_RESET);
-    do{
-        get_line(last_name, sizeof(last_name));
-    } while (strlen(last_name) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
+    get_line(last_name, sizeof(last_name));
     strcpy(new_contact->last_name, last_name);
 
     // Numer telefonu
     printf(COLOR_BOLD "Enter phone number: " COLOR_RESET);
-    do{
-        get_line(phone_number, sizeof(phone_number));
-    } while (strlen(phone_number) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
+    get_line(phone_number, sizeof(phone_number));
     strcpy(new_contact->phone_number, phone_number);
 
     // Ulica
     printf(COLOR_BOLD "Enter street: " COLOR_RESET);
-    do{
-        get_line(street, sizeof(street));
-    } while (strlen(street) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
+    get_line(street, sizeof(street));
     strcpy(new_contact->address.street, street);
 
     // Numer domu
     printf(COLOR_BOLD "Enter house number: " COLOR_RESET);
-    do{
-        get_line(nr, sizeof(nr));
-    } while (strlen(nr) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
+    get_line(nr, sizeof(nr));
     strcpy(new_contact->address.nr, nr);
 
     // Kod pocztowy
     printf(COLOR_BOLD "Enter post code: " COLOR_RESET);
-    do{
-        get_line(post_code, sizeof(post_code));
-    } while (strlen(post_code) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
+    get_line(post_code, sizeof(post_code));
     strcpy(new_contact->address.post_code, post_code);
     
     // Miasto
     printf(COLOR_BOLD "Enter town: " COLOR_RESET);
-    do{
-        get_line(town, sizeof(town));
-    } while (strlen(town) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
+    get_line(town, sizeof(town));
     strcpy(new_contact->address.town, town);
 
     
@@ -319,10 +305,8 @@ void search_contact_from_user(const Contacts *head) {
             printf(COLOR_RED "Invalid option.\n" COLOR_RESET);
     }
     }while(choice>7 || choice<0);
-    
-    do{
-        get_line(search_value, sizeof(search_value));
-    } while (strlen(search_value) == 0); // Kontynuuj pętlę, dopóki długość linii wynosi 0 (czyli dopóki nie zostanie wprowadzona żadna wartość)
+
+    get_line(search_value, sizeof(search_value));
 
     int total_width = COLUMN_WIDTH_ID + COLUMN_WIDTH_NAME + COLUMN_WIDTH_LAST_NAME +
                       COLUMN_WIDTH_PHONE_NUMBER + COLUMN_WIDTH_STREET + COLUMN_WIDTH_NR +
