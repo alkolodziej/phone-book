@@ -47,6 +47,11 @@ void get_line(char *line, size_t size) {
         }
 }
 
+void check_if_blank(char *line){
+    if(strlen(line) == 0)
+        strcpy(line, " ");
+}
+
 
 void add_contact_from_user(Contacts **head) {
     char name[30], last_name[30], phone_number[10];
@@ -64,36 +69,43 @@ void add_contact_from_user(Contacts **head) {
     // Imię
     printf(COLOR_BOLD "Enter name: " COLOR_RESET);
     get_line(name, sizeof(name));
+    check_if_blank(name);
     strcpy(new_contact->name, name);
 
     // Nazwisko
     printf(COLOR_BOLD "Enter last name: " COLOR_RESET);
     get_line(last_name, sizeof(last_name));
+    check_if_blank(last_name);
     strcpy(new_contact->last_name, last_name);
 
     // Numer telefonu
     printf(COLOR_BOLD "Enter phone number: " COLOR_RESET);
     get_line(phone_number, sizeof(phone_number));
+    check_if_blank(phone_number);
     strcpy(new_contact->phone_number, phone_number);
 
     // Ulica
     printf(COLOR_BOLD "Enter street: " COLOR_RESET);
     get_line(street, sizeof(street));
+    check_if_blank(street);
     strcpy(new_contact->address.street, street);
 
     // Numer domu
     printf(COLOR_BOLD "Enter house number: " COLOR_RESET);
     get_line(nr, sizeof(nr));
+    check_if_blank(nr);
     strcpy(new_contact->address.nr, nr);
 
     // Kod pocztowy
     printf(COLOR_BOLD "Enter post code: " COLOR_RESET);
     get_line(post_code, sizeof(post_code));
+    check_if_blank(post_code);
     strcpy(new_contact->address.post_code, post_code);
     
     // Miasto
     printf(COLOR_BOLD "Enter town: " COLOR_RESET);
     get_line(town, sizeof(town));
+    check_if_blank(town);
     strcpy(new_contact->address.town, town);
 
     
@@ -120,6 +132,7 @@ void check_to_change(char *first, char *second)
     if (strlen(second) > 0) {
         strcpy(first, second);
     }
+    check_if_blank(first);
 }
 
 void edit_contact_from_user(Contacts *head) {
@@ -146,6 +159,7 @@ void edit_contact_from_user(Contacts *head) {
                 printf(COLOR_YELLOW "Current last name: %s\n" COLOR_RESET, current->last_name);
                 printf(COLOR_BOLD "Enter new last name (leave blank to keep current): " COLOR_RESET);
                 get_line(last_name, sizeof(last_name));
+
 
                 // Numer telefonu
                 printf(COLOR_YELLOW "Current phone number: %s\n" COLOR_RESET, current->phone_number);
@@ -307,6 +321,7 @@ void search_contact_from_user(const Contacts *head) {
     }while(choice>7 || choice<0);
 
     get_line(search_value, sizeof(search_value));
+    check_if_blank(search_value);
 
     int total_width = COLUMN_WIDTH_ID + COLUMN_WIDTH_NAME + COLUMN_WIDTH_LAST_NAME +
                       COLUMN_WIDTH_PHONE_NUMBER + COLUMN_WIDTH_STREET + COLUMN_WIDTH_NR +
