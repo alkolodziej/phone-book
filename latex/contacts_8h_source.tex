@@ -1,0 +1,61 @@
+\doxysection{contacts.\+h}
+\hypertarget{contacts_8h_source}{}\label{contacts_8h_source}\index{PhoneBook/contacts.h@{PhoneBook/contacts.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONTACTS\_H\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONTACTS\_H\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Define\ column\ widths\ for\ displaying\ contact\ details}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_ID\ 10}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_NAME\ 32}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_LAST\_NAME\ 32}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_PHONE\_NUMBER\ 15}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_STREET\ 32}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_NR\ 7}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_POST\_CODE\ 10}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_TOWN\ 31}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Define\ the\ structure\ for\ an\ address}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_address}{Address}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{char}\ street[30];}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{char}\ nr[6];}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{char}\ post\_code[7];}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}\ town[30];}
+\DoxyCodeLine{00020\ \}\ \mbox{\hyperlink{struct_address}{Address}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ Define\ the\ structure\ for\ a\ contact}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_contacts}{Contacts}}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{char}\ name[30];}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{char}\ last\_name[30];}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{char}\ phone\_number[10];}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{struct_address}{Address}}\ address;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_contacts}{Contacts}}\ *next;}
+\DoxyCodeLine{00030\ \}\ \mbox{\hyperlink{struct_contacts}{Contacts}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Function\ declarations\ for\ managing\ contacts}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Save\ contacts\ to\ a\ file}}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a031967e1d0fa37ff6807eacec47a34f7}{save\_contacts\_to\_file}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Load\ contacts\ from\ a\ file}}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a862802dfef5ce7462faad8c413692ed7}{load\_contacts\_from\_file}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **head,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ Print\ a\ separator\ line\ in\ the\ contact\ list\ display}}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a2e68ceb8df1b7f987cdac9138f69cabd}{print\_separator}}(\textcolor{keywordtype}{int}\ total\_width);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ Display\ the\ sorting\ menu\ for\ contacts}}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a287f984766d88dac5d698f9d0444d33f}{display\_sorting\_menu}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ Display\ the\ menu\ for\ selecting\ ascending\ or\ descending\ order}}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_aad4b035c3680d70650316f433183cc97}{display\_ascending\_descending\_menu}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ Display\ the\ list\ of\ contacts}}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_adfbfc20957651cd598f548467b5185a5}{display\_list}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **headRef);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ Free\ memory\ allocated\ for\ the\ contacts\ list}}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_ab3d407c36ccb647095b9eded86d91f03}{free\_contacts\_list}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTACTS\_H\_INCLUDED}}
+
+\end{DoxyCode}

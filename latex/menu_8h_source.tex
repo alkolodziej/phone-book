@@ -1,0 +1,60 @@
+\doxysection{menu.\+h}
+\hypertarget{menu_8h_source}{}\label{menu_8h_source}\index{PhoneBook/menu.h@{PhoneBook/menu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MENU\_H\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MENU\_H\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}contacts.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Function\ declarations\ for\ menu\ operations}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Clears\ the\ screen}}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a4953d1edcbbfc7e420c423ded1d5621a}{clear\_screen}}();}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Gets\ user\ choice\ from\ the\ menu}}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{menu_8c_a3fa599412893eddb08a7ee91ac233790}{get\_user\_choice}}();}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Displays\ the\ main\ menu}}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a39f5190c4bbb94c4d470854781e91105}{display\_menu}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Gets\ a\ line\ of\ input\ from\ the\ user}}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a74661d92572cd38bcbca691ecda72243}{get\_line}}(\textcolor{keywordtype}{char}\ *line,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Checks\ if\ a\ given\ string\ is\ blank}}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_aa1aa11409bf7289aafaeec3d01be9311}{check\_if\_blank}}(\textcolor{keywordtype}{char}\ *line);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Adds\ a\ new\ contact\ from\ user\ input}}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a6a272dcd45faf21e90d670ebb101bb4b}{add\_contact\_from\_user}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **head);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ Checks\ and\ updates\ the\ value\ of\ a\ field\ if\ a\ new\ value\ is\ provided}}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_afd3fdb14b34e93248e346b8dc18847f3}{check\_to\_change}}(\textcolor{keywordtype}{char}\ *first,\ \textcolor{keywordtype}{char}\ *second);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ Edits\ an\ existing\ contact\ based\ on\ user\ input}}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a74e953f3326d9b99567375335b6ce839}{edit\_contact\_from\_user}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ Deletes\ a\ contact\ based\ on\ user\ input}}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a40a45f83f6d7a5cebcf16b2d5e2f941b}{delete\_contact\_from\_user}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **head);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Prints\ details\ of\ a\ single\ contact}}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_ac2dbe6b540f23c5644abe79862d067fb}{print\_contact}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *contact);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Prints\ the\ header\ of\ the\ contact\ details\ table}}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a3162395308bd9ed806c99d729143d686}{print\_header}}(\textcolor{keywordtype}{int}\ total\_width);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ Prints\ the\ menu\ for\ search\ options}}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_ab54d700593cee3e0ab3083f84368d44b}{print\_search\_menu}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Compares\ two\ strings\ case-\/insensitively\ up\ to\ the\ length\ of\ str2}}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{menu_8c_a729ad62083f202b365e55edf55f6de0c}{strcasecmp\_partial}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str2);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ Searches\ for\ a\ contact\ based\ on\ user\ input\ and\ displays\ the\ results}}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a444c7ecb10074e004b35284d746dd1b2}{search\_contact\_from\_user}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *head);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ Executes\ the\ selected\ option\ from\ the\ menu}}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{menu_8c_a0fce0dcbb9829b8864867b32fc4ef88d}{execute\_option}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **head,\ \textcolor{keywordtype}{int}\ option);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MENU\_H\_INCLUDED}}
+
+\end{DoxyCode}

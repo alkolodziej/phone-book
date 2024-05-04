@@ -1,0 +1,39 @@
+\doxysection{sort.\+h}
+\hypertarget{sort_8h_source}{}\label{sort_8h_source}\index{PhoneBook/sort.h@{PhoneBook/sort.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SORT\_H\_INCLUDED}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SORT\_H\_INCLUDED}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}contacts.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Define\ a\ function\ pointer\ type\ for\ comparators}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ int\ (*Comparator)(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *);}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Function\ declarations\ for\ sorting\ contacts}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Merge\ two\ sorted\ lists}}
+\DoxyCodeLine{00012\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *\mbox{\hyperlink{sort_8c_a6401d7addf873e06556fe378583b9097}{merge}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b,\ Comparator\ comp,\ \textcolor{keywordtype}{int}\ order);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Split\ a\ list\ into\ two\ sublists}}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sort_8c_ac1955302afa2fa54ed34a635c86ce47d}{split}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *source,\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ **frontRef,\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ **backRef);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Sort\ the\ list\ using\ Merge\ Sort}}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{mergeSort}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **headRef,\ Comparator\ comp,\ \textcolor{keywordtype}{int}\ order);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ Comparison\ functions\ for\ sorting\ contacts\ by\ different\ fields}}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}{compareByID}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b);}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_a509273a5c1ba03570cf56dfbfff8629d}{compareByName}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_ae3f8de7367c8dc45763ccfc52fb7c2a6}{compareByLastName}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_a614cebff538fd7e5fab99a816a2ca83d}{compareByPhoneNumber}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b);}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_ac425cf5b165fead1d78bd75c1a9656e4}{compareByStreet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_ace38f087a01ee5baca982229c3d2be7e}{compareByNr}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b);}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_a270f45035521c42513d35ed7c6d7b464}{compareByPostCode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_a9a6e2b7a071d710d3299718e03090f08}{compareByTown}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ Function\ to\ get\ the\ appropriate\ comparator\ based\ on\ user\ choice}}
+\DoxyCodeLine{00031\ Comparator\ \mbox{\hyperlink{sort_8c_a501bd07b6f81dd67799b747419881094}{get\_comparator}}(\textcolor{keywordtype}{int}\ sorting\_mode);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SORT\_H\_INCLUDED}}
+
+\end{DoxyCode}

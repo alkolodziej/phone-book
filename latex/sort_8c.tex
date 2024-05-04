@@ -1,0 +1,312 @@
+\doxysection{Phone\+Book/sort.c File Reference}
+\hypertarget{sort_8c}{}\label{sort_8c}\index{PhoneBook/sort.c@{PhoneBook/sort.c}}
+
+
+Implementation of functions related to sorting contacts.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}contacts.\+h"{}}\newline
+{\ttfamily \#include "{}sort.\+h"{}}\newline
+{\ttfamily \#include "{}colors.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sort_8c_a6401d7addf873e06556fe378583b9097}{merge}} (\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b, Comparator comp, int order)
+\begin{DoxyCompactList}\small\item\em Merges two sorted lists into one. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sort_8c_ac1955302afa2fa54ed34a635c86ce47d}{split}} (\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}source, \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}front\+Ref, \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}back\+Ref)
+\begin{DoxyCompactList}\small\item\em Splits the list into two sublists. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{merge\+Sort}} (\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head\+Ref, Comparator comp, int order)
+\begin{DoxyCompactList}\small\item\em Sorts the linked list using Merge Sort. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}{compare\+By\+ID}} (const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting by ID. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sort_8c_a509273a5c1ba03570cf56dfbfff8629d}{compare\+By\+Name}} (const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting by name. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sort_8c_ae3f8de7367c8dc45763ccfc52fb7c2a6}{compare\+By\+Last\+Name}} (const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting by last name. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sort_8c_a614cebff538fd7e5fab99a816a2ca83d}{compare\+By\+Phone\+Number}} (const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting by phone number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sort_8c_ac425cf5b165fead1d78bd75c1a9656e4}{compare\+By\+Street}} (const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting by street. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sort_8c_ace38f087a01ee5baca982229c3d2be7e}{compare\+By\+Nr}} (const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting by house number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sort_8c_a270f45035521c42513d35ed7c6d7b464}{compare\+By\+Post\+Code}} (const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting by post code. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sort_8c_a9a6e2b7a071d710d3299718e03090f08}{compare\+By\+Town}} (const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting by town. \end{DoxyCompactList}\item 
+Comparator \mbox{\hyperlink{sort_8c_a501bd07b6f81dd67799b747419881094}{get\+\_\+comparator}} (int sorting\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em Gets the comparator function based on user choice. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of functions related to sorting contacts. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}\label{sort_8c_aabfaaba1c3b7328d143d781bd995bd67} 
+\index{sort.c@{sort.c}!compareByID@{compareByID}}
+\index{compareByID@{compareByID}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{compareByID()}{compareByID()}}
+{\footnotesize\ttfamily int compare\+By\+ID (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting by ID. 
+
+This function compares two contacts based on their ID numbers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first contact. \\
+\hline
+{\em b} & Pointer to the second contact. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a should precede b, positive if b should precede a, zero if equal. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_ae3f8de7367c8dc45763ccfc52fb7c2a6}\label{sort_8c_ae3f8de7367c8dc45763ccfc52fb7c2a6} 
+\index{sort.c@{sort.c}!compareByLastName@{compareByLastName}}
+\index{compareByLastName@{compareByLastName}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{compareByLastName()}{compareByLastName()}}
+{\footnotesize\ttfamily int compare\+By\+Last\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting by last name. 
+
+This function compares two contacts based on their last names.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first contact. \\
+\hline
+{\em b} & Pointer to the second contact. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a should precede b, positive if b should precede a, zero if equal. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_a509273a5c1ba03570cf56dfbfff8629d}\label{sort_8c_a509273a5c1ba03570cf56dfbfff8629d} 
+\index{sort.c@{sort.c}!compareByName@{compareByName}}
+\index{compareByName@{compareByName}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{compareByName()}{compareByName()}}
+{\footnotesize\ttfamily int compare\+By\+Name (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting by name. 
+
+This function compares two contacts based on their names.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first contact. \\
+\hline
+{\em b} & Pointer to the second contact. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a should precede b, positive if b should precede a, zero if equal. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_ace38f087a01ee5baca982229c3d2be7e}\label{sort_8c_ace38f087a01ee5baca982229c3d2be7e} 
+\index{sort.c@{sort.c}!compareByNr@{compareByNr}}
+\index{compareByNr@{compareByNr}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{compareByNr()}{compareByNr()}}
+{\footnotesize\ttfamily int compare\+By\+Nr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting by house number. 
+
+This function compares two contacts based on their house numbers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first contact. \\
+\hline
+{\em b} & Pointer to the second contact. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a should precede b, positive if b should precede a, zero if equal. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_a614cebff538fd7e5fab99a816a2ca83d}\label{sort_8c_a614cebff538fd7e5fab99a816a2ca83d} 
+\index{sort.c@{sort.c}!compareByPhoneNumber@{compareByPhoneNumber}}
+\index{compareByPhoneNumber@{compareByPhoneNumber}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{compareByPhoneNumber()}{compareByPhoneNumber()}}
+{\footnotesize\ttfamily int compare\+By\+Phone\+Number (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting by phone number. 
+
+This function compares two contacts based on their phone numbers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first contact. \\
+\hline
+{\em b} & Pointer to the second contact. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a should precede b, positive if b should precede a, zero if equal. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_a270f45035521c42513d35ed7c6d7b464}\label{sort_8c_a270f45035521c42513d35ed7c6d7b464} 
+\index{sort.c@{sort.c}!compareByPostCode@{compareByPostCode}}
+\index{compareByPostCode@{compareByPostCode}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{compareByPostCode()}{compareByPostCode()}}
+{\footnotesize\ttfamily int compare\+By\+Post\+Code (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting by post code. 
+
+This function compares two contacts based on their post codes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first contact. \\
+\hline
+{\em b} & Pointer to the second contact. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a should precede b, positive if b should precede a, zero if equal. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_ac425cf5b165fead1d78bd75c1a9656e4}\label{sort_8c_ac425cf5b165fead1d78bd75c1a9656e4} 
+\index{sort.c@{sort.c}!compareByStreet@{compareByStreet}}
+\index{compareByStreet@{compareByStreet}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{compareByStreet()}{compareByStreet()}}
+{\footnotesize\ttfamily int compare\+By\+Street (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting by street. 
+
+This function compares two contacts based on their street addresses.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first contact. \\
+\hline
+{\em b} & Pointer to the second contact. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a should precede b, positive if b should precede a, zero if equal. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_a9a6e2b7a071d710d3299718e03090f08}\label{sort_8c_a9a6e2b7a071d710d3299718e03090f08} 
+\index{sort.c@{sort.c}!compareByTown@{compareByTown}}
+\index{compareByTown@{compareByTown}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{compareByTown()}{compareByTown()}}
+{\footnotesize\ttfamily int compare\+By\+Town (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting by town. 
+
+This function compares two contacts based on their towns.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first contact. \\
+\hline
+{\em b} & Pointer to the second contact. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a should precede b, positive if b should precede a, zero if equal. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_a501bd07b6f81dd67799b747419881094}\label{sort_8c_a501bd07b6f81dd67799b747419881094} 
+\index{sort.c@{sort.c}!get\_comparator@{get\_comparator}}
+\index{get\_comparator@{get\_comparator}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{get\_comparator()}{get\_comparator()}}
+{\footnotesize\ttfamily Comparator get\+\_\+comparator (\begin{DoxyParamCaption}\item[{int}]{sorting\+\_\+mode }\end{DoxyParamCaption})}
+
+
+
+Gets the comparator function based on user choice. 
+
+This function returns the appropriate comparator function based on the user\textquotesingle{}s choice for sorting mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sorting\+\_\+mode} & User choice for sorting mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Comparator function. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_a6401d7addf873e06556fe378583b9097}\label{sort_8c_a6401d7addf873e06556fe378583b9097} 
+\index{sort.c@{sort.c}!merge@{merge}}
+\index{merge@{merge}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{merge()}{merge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*} merge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{Comparator}]{comp,  }\item[{int}]{order }\end{DoxyParamCaption})}
+
+
+
+Merges two sorted lists into one. 
+
+This function merges two sorted linked lists into a single sorted linked list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the head of the first sorted list. \\
+\hline
+{\em b} & Pointer to the head of the second sorted list. \\
+\hline
+{\em comp} & Comparator function for comparing contacts. \\
+\hline
+{\em order} & Sorting order parameter (1 for ascending, -\/1 for descending). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the merged sorted list. 
+\end{DoxyReturn}
+\Hypertarget{sort_8c_a179c49c49bab7cfecdf3198d68074520}\label{sort_8c_a179c49c49bab7cfecdf3198d68074520} 
+\index{sort.c@{sort.c}!mergeSort@{mergeSort}}
+\index{mergeSort@{mergeSort}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{mergeSort()}{mergeSort()}}
+{\footnotesize\ttfamily void merge\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head\+Ref,  }\item[{Comparator}]{comp,  }\item[{int}]{order }\end{DoxyParamCaption})}
+
+
+
+Sorts the linked list using Merge Sort. 
+
+This function sorts a linked list using the Merge Sort algorithm. It recursively divides the list into smaller sublists, sorts them individually, and then merges them back together in the correct order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em head\+Ref} & Pointer to the pointer to the head of the contacts list. \\
+\hline
+{\em comp} & Comparator function for comparing contacts. \\
+\hline
+{\em order} & Sorting order parameter (1 for ascending, -\/1 for descending). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sort_8c_ac1955302afa2fa54ed34a635c86ce47d}\label{sort_8c_ac1955302afa2fa54ed34a635c86ce47d} 
+\index{sort.c@{sort.c}!split@{split}}
+\index{split@{split}!sort.c@{sort.c}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily void split (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{source,  }\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{front\+Ref,  }\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{back\+Ref }\end{DoxyParamCaption})}
+
+
+
+Splits the list into two sublists. 
+
+This function divides a linked list into two separate linked lists. It uses a slow and a fast pointer to find the midpoint of the list and then splits it at that point.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Pointer to the head of the list to split. \\
+\hline
+{\em front\+Ref} & Pointer to the pointer to store the head of the first sublist. \\
+\hline
+{\em back\+Ref} & Pointer to the pointer to store the head of the second sublist. \\
+\hline
+\end{DoxyParams}
