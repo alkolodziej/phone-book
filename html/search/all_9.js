@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['save_5fcontacts_5fto_5ffile_0',['save_contacts_to_file',['../contacts_8c.html#a031967e1d0fa37ff6807eacec47a34f7',1,'contacts.c']]],
-  ['search_5fcontact_5ffrom_5fuser_1',['search_contact_from_user',['../menu_8c.html#a444c7ecb10074e004b35284d746dd1b2',1,'menu.c']]],
-  ['sort_2ec_2',['sort.c',['../sort_8c.html',1,'']]],
-  ['split_3',['split',['../sort_8c.html#ac1955302afa2fa54ed34a635c86ce47d',1,'sort.c']]],
-  ['strcasecmp_5fpartial_4',['strcasecmp_partial',['../menu_8c.html#a729ad62083f202b365e55edf55f6de0c',1,'menu.c']]]
+  ['main_0',['main',['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]],
+  ['main_2ec_1',['main.c',['../main_8c.html',1,'']]],
+  ['menu_2ec_2',['menu.c',['../menu_8c.html',1,'']]],
+  ['menu_2eh_3',['menu.h',['../menu_8h.html',1,'']]],
+  ['merge_4',['merge',['../sort_8c.html#a6401d7addf873e06556fe378583b9097',1,'merge(Contacts *a, Contacts *b, Comparator comp, int order):&#160;sort.c'],['../sort_8h.html#a6401d7addf873e06556fe378583b9097',1,'merge(Contacts *a, Contacts *b, Comparator comp, int order):&#160;sort.c']]],
+  ['mergesort_5',['mergeSort',['../sort_8c.html#a179c49c49bab7cfecdf3198d68074520',1,'mergeSort(Contacts **headRef, Comparator comp, int order):&#160;sort.c'],['../sort_8h.html#a179c49c49bab7cfecdf3198d68074520',1,'mergeSort(Contacts **headRef, Comparator comp, int order):&#160;sort.c']]]
 ];

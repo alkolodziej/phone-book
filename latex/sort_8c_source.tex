@@ -1,0 +1,134 @@
+\doxysection{sort.\+c}
+\hypertarget{sort_8c_source}{}\label{sort_8c_source}\index{PhoneBook/sort.c@{PhoneBook/sort.c}}
+\mbox{\hyperlink{sort_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{contacts_8h}{contacts.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sort_8h}{sort.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{colors_8h}{colors.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00024}\mbox{\hyperlink{sort_8c_a6401d7addf873e06556fe378583b9097}{00024}}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *\mbox{\hyperlink{sort_8c_a6401d7addf873e06556fe378583b9097}{merge}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b,\ \mbox{\hyperlink{sort_8h_aaceb387ca61eaa38e7b8624c75bef773}{Comparator}}\ comp,\ \textcolor{keywordtype}{int}\ order)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *result\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Base\ cases:\ if\ either\ list\ is\ empty,\ return\ the\ other\ list}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00030}00030\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (b\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Compare\ the\ elements\ of\ the\ two\ lists\ and\ merge\ them\ accordingly}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ ((order\ ==\ 1\ \&\&\ comp(a,\ b)\ <=\ 0)\ ||\ (order\ ==\ -\/1\ \&\&\ comp(a,\ b)\ >=\ 0))\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ result\ =\ a;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}}\ =\ \mbox{\hyperlink{sort_8c_a6401d7addf873e06556fe378583b9097}{merge}}(a-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}},\ b,\ comp,\ order);}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00038}00038\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ result\ =\ b;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}}\ =\ \mbox{\hyperlink{sort_8c_a6401d7addf873e06556fe378583b9097}{merge}}(a,\ b-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}},\ comp,\ order);}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00055}\mbox{\hyperlink{sort_8c_ac1955302afa2fa54ed34a635c86ce47d}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sort_8c_ac1955302afa2fa54ed34a635c86ce47d}{split}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *source,\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ **frontRef,\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ **backRef)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00056}00056\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *fast;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *slow;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (source\ ==\ NULL\ ||\ source-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}}\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ *frontRef\ =\ source;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ *backRef\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00062}00062\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ slow\ =\ source;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ fast\ =\ source-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Advance\ 'fast'\ two\ nodes\ and\ advance\ 'slow'\ one\ node}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fast\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ fast\ =\ fast-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fast\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slow\ =\ slow-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fast\ =\ fast-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 'slow'\ is\ before\ the\ midpoint,\ split\ the\ list\ in\ two\ at\ that\ point}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ *frontRef\ =\ source;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ *backRef\ =\ slow-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ slow-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00091}\mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{00091}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{mergeSort}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **headRef,\ \mbox{\hyperlink{sort_8h_aaceb387ca61eaa38e7b8624c75bef773}{Comparator}}\ comp,\ \textcolor{keywordtype}{int}\ order)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *head\ =\ *headRef;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00093}00093\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b;}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Base\ case:\ empty\ or\ single\ element\ list,\ no\ need\ to\ sort}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{if}\ (head\ ==\ NULL\ ||\ head-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}}\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Split\ head\ into\ 'a'\ and\ 'b'\ sublists}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00102}00102\ \ \ \ \ \mbox{\hyperlink{sort_8c_ac1955302afa2fa54ed34a635c86ce47d}{split}}(head,\ \&a,\ \&b);}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ Recursively\ sort\ the\ sublists}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{mergeSort}}(\&a,\ comp,\ order);}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{mergeSort}}(\&b,\ comp,\ order);}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Merge\ the\ sorted\ sublists}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00109}00109\ \ \ \ \ *headRef\ =\ \mbox{\hyperlink{sort_8c_a6401d7addf873e06556fe378583b9097}{merge}}(a,\ b,\ comp,\ order);}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00121}\mbox{\hyperlink{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}{00121}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}{compareByID}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{return}\ a-\/>\mbox{\hyperlink{struct_contacts_a7441ef0865bcb3db9b8064dd7375c1ea}{id}}\ -\/\ b-\/>\mbox{\hyperlink{struct_contacts_a7441ef0865bcb3db9b8064dd7375c1ea}{id}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00134}\mbox{\hyperlink{sort_8c_a509273a5c1ba03570cf56dfbfff8629d}{00134}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_a509273a5c1ba03570cf56dfbfff8629d}{compareByName}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00135}00135\ \ \ \ \ \textcolor{keywordflow}{return}\ strcasecmp(a-\/>\mbox{\hyperlink{struct_contacts_a72b952e44981373d9737a72616bb317f}{name}},\ b-\/>\mbox{\hyperlink{struct_contacts_a72b952e44981373d9737a72616bb317f}{name}});}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00147}\mbox{\hyperlink{sort_8c_ae3f8de7367c8dc45763ccfc52fb7c2a6}{00147}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_ae3f8de7367c8dc45763ccfc52fb7c2a6}{compareByLastName}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{return}\ strcasecmp(a-\/>\mbox{\hyperlink{struct_contacts_a478f4abd2843dbd78c96fe39e1d729d1}{last\_name}},\ b-\/>\mbox{\hyperlink{struct_contacts_a478f4abd2843dbd78c96fe39e1d729d1}{last\_name}});}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00160}\mbox{\hyperlink{sort_8c_a614cebff538fd7e5fab99a816a2ca83d}{00160}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_a614cebff538fd7e5fab99a816a2ca83d}{compareByPhoneNumber}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00161}00161\ \ \ \ \ \textcolor{keywordflow}{return}\ strcasecmp(a-\/>\mbox{\hyperlink{struct_contacts_a9ba481781ccbb44436cf997cec11cbc9}{phone\_number}},\ b-\/>\mbox{\hyperlink{struct_contacts_a9ba481781ccbb44436cf997cec11cbc9}{phone\_number}});}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00162}00162\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00173}\mbox{\hyperlink{sort_8c_ac425cf5b165fead1d78bd75c1a9656e4}{00173}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_ac425cf5b165fead1d78bd75c1a9656e4}{compareByStreet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{return}\ strcasecmp(a-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_acd6c927f2a56d871fe478a9e882396d0}{street}},\ b-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_acd6c927f2a56d871fe478a9e882396d0}{street}});}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00175}00175\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00186}\mbox{\hyperlink{sort_8c_ace38f087a01ee5baca982229c3d2be7e}{00186}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_ace38f087a01ee5baca982229c3d2be7e}{compareByNr}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00187}00187\ \ \ \ \ \textcolor{keywordflow}{return}\ strcasecmp(a-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a7a991eea41f8d9aa185de463513b46e2}{nr}},\ b-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a7a991eea41f8d9aa185de463513b46e2}{nr}});}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00188}00188\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00199}\mbox{\hyperlink{sort_8c_a270f45035521c42513d35ed7c6d7b464}{00199}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_a270f45035521c42513d35ed7c6d7b464}{compareByPostCode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{return}\ strcasecmp(a-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a50755310381c07cce96f41fccd860a71}{post\_code}},\ b-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a50755310381c07cce96f41fccd860a71}{post\_code}});}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00201}00201\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00212}\mbox{\hyperlink{sort_8c_a9a6e2b7a071d710d3299718e03090f08}{00212}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sort_8c_a9a6e2b7a071d710d3299718e03090f08}{compareByTown}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00213}00213\ \ \ \ \ \textcolor{keywordflow}{return}\ strcasecmp(a-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_ad9a15792167890540d0ba04a1daf05a7}{town}},\ b-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_ad9a15792167890540d0ba04a1daf05a7}{town}});}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00224}\mbox{\hyperlink{sort_8c_a501bd07b6f81dd67799b747419881094}{00224}}\ \mbox{\hyperlink{sort_8h_aaceb387ca61eaa38e7b8624c75bef773}{Comparator}}\ \mbox{\hyperlink{sort_8c_a501bd07b6f81dd67799b747419881094}{get\_comparator}}(\textcolor{keywordtype}{int}\ sorting\_mode)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00225}00225\ \ \ \ \ \textcolor{keywordflow}{switch}\ (sorting\_mode)\ \{}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}{compareByID}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{sort_8c_a509273a5c1ba03570cf56dfbfff8629d}{compareByName}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{sort_8c_ae3f8de7367c8dc45763ccfc52fb7c2a6}{compareByLastName}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{sort_8c_a614cebff538fd7e5fab99a816a2ca83d}{compareByPhoneNumber}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 5:}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{sort_8c_a9a6e2b7a071d710d3299718e03090f08}{compareByTown}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 6:}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{sort_8c_a270f45035521c42513d35ed7c6d7b464}{compareByPostCode}};}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}{compareByID}};\ \textcolor{comment}{//\ Default\ sorting\ mode}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00240}00240\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sort_8c_source_l00241}00241\ \}}
+
+\end{DoxyCode}

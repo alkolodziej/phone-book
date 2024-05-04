@@ -1,0 +1,288 @@
+\doxysection{Phone\+Book/contacts.h File Reference}
+\hypertarget{contacts_8h}{}\label{contacts_8h}\index{PhoneBook/contacts.h@{PhoneBook/contacts.h}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_address}{Address}}
+\item 
+struct \mbox{\hyperlink{struct_contacts}{Contacts}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{contacts_8h_a68253a8a5f6a9bef2b207be75bec22e1}{COLUMN\+\_\+\+WIDTH\+\_\+\+ID}}~10
+\item 
+\#define \mbox{\hyperlink{contacts_8h_abd2cd22e3be18031f84a965f7dd91c2b}{COLUMN\+\_\+\+WIDTH\+\_\+\+NAME}}~32
+\item 
+\#define \mbox{\hyperlink{contacts_8h_aaa7d5dacf3b241406e61bdd5043affa3}{COLUMN\+\_\+\+WIDTH\+\_\+\+LAST\+\_\+\+NAME}}~32
+\item 
+\#define \mbox{\hyperlink{contacts_8h_ac433eebd68f31b97ba7f8a80bbae6032}{COLUMN\+\_\+\+WIDTH\+\_\+\+PHONE\+\_\+\+NUMBER}}~15
+\item 
+\#define \mbox{\hyperlink{contacts_8h_ae3ce23c36924fd9c31d4a71a220a9b3c}{COLUMN\+\_\+\+WIDTH\+\_\+\+STREET}}~32
+\item 
+\#define \mbox{\hyperlink{contacts_8h_a38d46e80a12d3d2153b40575688e2aec}{COLUMN\+\_\+\+WIDTH\+\_\+\+NR}}~7
+\item 
+\#define \mbox{\hyperlink{contacts_8h_aa8de2cb433db11713a7e5c59a33565d1}{COLUMN\+\_\+\+WIDTH\+\_\+\+POST\+\_\+\+CODE}}~10
+\item 
+\#define \mbox{\hyperlink{contacts_8h_a7f160c1e78dacde3f7b452bf38916018}{COLUMN\+\_\+\+WIDTH\+\_\+\+TOWN}}~31
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Address \mbox{\hyperlink{contacts_8h_a911b0ed0af12072240852ad821338a96}{Address}}
+\item 
+typedef struct Contacts \mbox{\hyperlink{contacts_8h_a73a94c8e38ee2e6f3b81e87081c47133}{Contacts}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{contacts_8h_a031967e1d0fa37ff6807eacec47a34f7}{save\+\_\+contacts\+\_\+to\+\_\+file}} (\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}head, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Saves contacts to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{contacts_8h_a862802dfef5ce7462faad8c413692ed7}{load\+\_\+contacts\+\_\+from\+\_\+file}} (\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Loads contacts from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{contacts_8h_a2e68ceb8df1b7f987cdac9138f69cabd}{print\+\_\+separator}} (int total\+\_\+width)
+\begin{DoxyCompactList}\small\item\em Prints a separator line. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{contacts_8h_a287f984766d88dac5d698f9d0444d33f}{display\+\_\+sorting\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Displays the sorting menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{contacts_8h_aad4b035c3680d70650316f433183cc97}{display\+\_\+ascending\+\_\+descending\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Displays the ascending/descending sorting menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{contacts_8h_adfbfc20957651cd598f548467b5185a5}{display\+\_\+list}} (\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head\+Ref)
+\begin{DoxyCompactList}\small\item\em Displays the contacts list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{contacts_8h_ab3d407c36ccb647095b9eded86d91f03}{free\+\_\+contacts\+\_\+list}} (\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}head)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for the contacts list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{contacts_8h_a68253a8a5f6a9bef2b207be75bec22e1}\label{contacts_8h_a68253a8a5f6a9bef2b207be75bec22e1} 
+\index{contacts.h@{contacts.h}!COLUMN\_WIDTH\_ID@{COLUMN\_WIDTH\_ID}}
+\index{COLUMN\_WIDTH\_ID@{COLUMN\_WIDTH\_ID}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH\_ID}{COLUMN\_WIDTH\_ID}}
+{\footnotesize\ttfamily \#define COLUMN\+\_\+\+WIDTH\+\_\+\+ID~10}
+
+
+
+Definition at line \mbox{\hyperlink{contacts_8h_source_l00005}{5}} of file \mbox{\hyperlink{contacts_8h_source}{contacts.\+h}}.
+
+\Hypertarget{contacts_8h_aaa7d5dacf3b241406e61bdd5043affa3}\label{contacts_8h_aaa7d5dacf3b241406e61bdd5043affa3} 
+\index{contacts.h@{contacts.h}!COLUMN\_WIDTH\_LAST\_NAME@{COLUMN\_WIDTH\_LAST\_NAME}}
+\index{COLUMN\_WIDTH\_LAST\_NAME@{COLUMN\_WIDTH\_LAST\_NAME}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH\_LAST\_NAME}{COLUMN\_WIDTH\_LAST\_NAME}}
+{\footnotesize\ttfamily \#define COLUMN\+\_\+\+WIDTH\+\_\+\+LAST\+\_\+\+NAME~32}
+
+
+
+Definition at line \mbox{\hyperlink{contacts_8h_source_l00007}{7}} of file \mbox{\hyperlink{contacts_8h_source}{contacts.\+h}}.
+
+\Hypertarget{contacts_8h_abd2cd22e3be18031f84a965f7dd91c2b}\label{contacts_8h_abd2cd22e3be18031f84a965f7dd91c2b} 
+\index{contacts.h@{contacts.h}!COLUMN\_WIDTH\_NAME@{COLUMN\_WIDTH\_NAME}}
+\index{COLUMN\_WIDTH\_NAME@{COLUMN\_WIDTH\_NAME}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH\_NAME}{COLUMN\_WIDTH\_NAME}}
+{\footnotesize\ttfamily \#define COLUMN\+\_\+\+WIDTH\+\_\+\+NAME~32}
+
+
+
+Definition at line \mbox{\hyperlink{contacts_8h_source_l00006}{6}} of file \mbox{\hyperlink{contacts_8h_source}{contacts.\+h}}.
+
+\Hypertarget{contacts_8h_a38d46e80a12d3d2153b40575688e2aec}\label{contacts_8h_a38d46e80a12d3d2153b40575688e2aec} 
+\index{contacts.h@{contacts.h}!COLUMN\_WIDTH\_NR@{COLUMN\_WIDTH\_NR}}
+\index{COLUMN\_WIDTH\_NR@{COLUMN\_WIDTH\_NR}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH\_NR}{COLUMN\_WIDTH\_NR}}
+{\footnotesize\ttfamily \#define COLUMN\+\_\+\+WIDTH\+\_\+\+NR~7}
+
+
+
+Definition at line \mbox{\hyperlink{contacts_8h_source_l00010}{10}} of file \mbox{\hyperlink{contacts_8h_source}{contacts.\+h}}.
+
+\Hypertarget{contacts_8h_ac433eebd68f31b97ba7f8a80bbae6032}\label{contacts_8h_ac433eebd68f31b97ba7f8a80bbae6032} 
+\index{contacts.h@{contacts.h}!COLUMN\_WIDTH\_PHONE\_NUMBER@{COLUMN\_WIDTH\_PHONE\_NUMBER}}
+\index{COLUMN\_WIDTH\_PHONE\_NUMBER@{COLUMN\_WIDTH\_PHONE\_NUMBER}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH\_PHONE\_NUMBER}{COLUMN\_WIDTH\_PHONE\_NUMBER}}
+{\footnotesize\ttfamily \#define COLUMN\+\_\+\+WIDTH\+\_\+\+PHONE\+\_\+\+NUMBER~15}
+
+
+
+Definition at line \mbox{\hyperlink{contacts_8h_source_l00008}{8}} of file \mbox{\hyperlink{contacts_8h_source}{contacts.\+h}}.
+
+\Hypertarget{contacts_8h_aa8de2cb433db11713a7e5c59a33565d1}\label{contacts_8h_aa8de2cb433db11713a7e5c59a33565d1} 
+\index{contacts.h@{contacts.h}!COLUMN\_WIDTH\_POST\_CODE@{COLUMN\_WIDTH\_POST\_CODE}}
+\index{COLUMN\_WIDTH\_POST\_CODE@{COLUMN\_WIDTH\_POST\_CODE}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH\_POST\_CODE}{COLUMN\_WIDTH\_POST\_CODE}}
+{\footnotesize\ttfamily \#define COLUMN\+\_\+\+WIDTH\+\_\+\+POST\+\_\+\+CODE~10}
+
+
+
+Definition at line \mbox{\hyperlink{contacts_8h_source_l00011}{11}} of file \mbox{\hyperlink{contacts_8h_source}{contacts.\+h}}.
+
+\Hypertarget{contacts_8h_ae3ce23c36924fd9c31d4a71a220a9b3c}\label{contacts_8h_ae3ce23c36924fd9c31d4a71a220a9b3c} 
+\index{contacts.h@{contacts.h}!COLUMN\_WIDTH\_STREET@{COLUMN\_WIDTH\_STREET}}
+\index{COLUMN\_WIDTH\_STREET@{COLUMN\_WIDTH\_STREET}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH\_STREET}{COLUMN\_WIDTH\_STREET}}
+{\footnotesize\ttfamily \#define COLUMN\+\_\+\+WIDTH\+\_\+\+STREET~32}
+
+
+
+Definition at line \mbox{\hyperlink{contacts_8h_source_l00009}{9}} of file \mbox{\hyperlink{contacts_8h_source}{contacts.\+h}}.
+
+\Hypertarget{contacts_8h_a7f160c1e78dacde3f7b452bf38916018}\label{contacts_8h_a7f160c1e78dacde3f7b452bf38916018} 
+\index{contacts.h@{contacts.h}!COLUMN\_WIDTH\_TOWN@{COLUMN\_WIDTH\_TOWN}}
+\index{COLUMN\_WIDTH\_TOWN@{COLUMN\_WIDTH\_TOWN}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{COLUMN\_WIDTH\_TOWN}{COLUMN\_WIDTH\_TOWN}}
+{\footnotesize\ttfamily \#define COLUMN\+\_\+\+WIDTH\+\_\+\+TOWN~31}
+
+
+
+Definition at line \mbox{\hyperlink{contacts_8h_source_l00012}{12}} of file \mbox{\hyperlink{contacts_8h_source}{contacts.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{contacts_8h_a911b0ed0af12072240852ad821338a96}\label{contacts_8h_a911b0ed0af12072240852ad821338a96} 
+\index{contacts.h@{contacts.h}!Address@{Address}}
+\index{Address@{Address}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{Address}{Address}}
+{\footnotesize\ttfamily typedef struct Address Address}
+
+\Hypertarget{contacts_8h_a73a94c8e38ee2e6f3b81e87081c47133}\label{contacts_8h_a73a94c8e38ee2e6f3b81e87081c47133} 
+\index{contacts.h@{contacts.h}!Contacts@{Contacts}}
+\index{Contacts@{Contacts}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{Contacts}{Contacts}}
+{\footnotesize\ttfamily typedef struct Contacts Contacts}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{contacts_8h_aad4b035c3680d70650316f433183cc97}\label{contacts_8h_aad4b035c3680d70650316f433183cc97} 
+\index{contacts.h@{contacts.h}!display\_ascending\_descending\_menu@{display\_ascending\_descending\_menu}}
+\index{display\_ascending\_descending\_menu@{display\_ascending\_descending\_menu}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{display\_ascending\_descending\_menu()}{display\_ascending\_descending\_menu()}}
+{\footnotesize\ttfamily void display\+\_\+ascending\+\_\+descending\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the ascending/descending sorting menu. 
+
+This function prints the ascending/descending sorting options to the console, allowing the user to choose the sorting order. 
+
+Definition at line \mbox{\hyperlink{contacts_8c_source_l00137}{137}} of file \mbox{\hyperlink{contacts_8c_source}{contacts.\+c}}.
+
+\Hypertarget{contacts_8h_adfbfc20957651cd598f548467b5185a5}\label{contacts_8h_adfbfc20957651cd598f548467b5185a5} 
+\index{contacts.h@{contacts.h}!display\_list@{display\_list}}
+\index{display\_list@{display\_list}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{display\_list()}{display\_list()}}
+{\footnotesize\ttfamily void display\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head\+Ref }\end{DoxyParamCaption})}
+
+
+
+Displays the contacts list. 
+
+This function displays the contacts list in a formatted table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em head\+Ref} & Pointer to the pointer to the head of the contacts list. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{contacts_8c_source_l00151}{151}} of file \mbox{\hyperlink{contacts_8c_source}{contacts.\+c}}.
+
+\Hypertarget{contacts_8h_a287f984766d88dac5d698f9d0444d33f}\label{contacts_8h_a287f984766d88dac5d698f9d0444d33f} 
+\index{contacts.h@{contacts.h}!display\_sorting\_menu@{display\_sorting\_menu}}
+\index{display\_sorting\_menu@{display\_sorting\_menu}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{display\_sorting\_menu()}{display\_sorting\_menu()}}
+{\footnotesize\ttfamily void display\+\_\+sorting\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the sorting menu. 
+
+This function prints the sorting menu options to the console, allowing the user to choose the sorting criteria. 
+
+Definition at line \mbox{\hyperlink{contacts_8c_source_l00120}{120}} of file \mbox{\hyperlink{contacts_8c_source}{contacts.\+c}}.
+
+\Hypertarget{contacts_8h_ab3d407c36ccb647095b9eded86d91f03}\label{contacts_8h_ab3d407c36ccb647095b9eded86d91f03} 
+\index{contacts.h@{contacts.h}!free\_contacts\_list@{free\_contacts\_list}}
+\index{free\_contacts\_list@{free\_contacts\_list}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{free\_contacts\_list()}{free\_contacts\_list()}}
+{\footnotesize\ttfamily void free\+\_\+contacts\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{head }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for the contacts list. 
+
+This function iterates through the contacts list and frees the memory allocated for each contact node, including the memory for the contact\textquotesingle{}s data structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Pointer to the head of the contacts list. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{contacts_8c_source_l00231}{231}} of file \mbox{\hyperlink{contacts_8c_source}{contacts.\+c}}.
+
+\Hypertarget{contacts_8h_a862802dfef5ce7462faad8c413692ed7}\label{contacts_8h_a862802dfef5ce7462faad8c413692ed7} 
+\index{contacts.h@{contacts.h}!load\_contacts\_from\_file@{load\_contacts\_from\_file}}
+\index{load\_contacts\_from\_file@{load\_contacts\_from\_file}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{load\_contacts\_from\_file()}{load\_contacts\_from\_file()}}
+{\footnotesize\ttfamily void load\+\_\+contacts\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Loads contacts from a file. 
+
+This function reads contact information from a file and creates a linked list of contacts based on the data read from the file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Pointer to the pointer to the head of the contacts list. \\
+\hline
+{\em filename} & Name of the file to load contacts from. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{contacts_8c_source_l00050}{50}} of file \mbox{\hyperlink{contacts_8c_source}{contacts.\+c}}.
+
+\Hypertarget{contacts_8h_a2e68ceb8df1b7f987cdac9138f69cabd}\label{contacts_8h_a2e68ceb8df1b7f987cdac9138f69cabd} 
+\index{contacts.h@{contacts.h}!print\_separator@{print\_separator}}
+\index{print\_separator@{print\_separator}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{print\_separator()}{print\_separator()}}
+{\footnotesize\ttfamily void print\+\_\+separator (\begin{DoxyParamCaption}\item[{int}]{total\+\_\+width }\end{DoxyParamCaption})}
+
+
+
+Prints a separator line. 
+
+This function prints a horizontal separator line composed of \textquotesingle{}-\/\textquotesingle{} characters enclosed by \textquotesingle{}+\textquotesingle{} characters at the beginning and end.
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\+\_\+width} & Total width of the separator line. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{contacts_8c_source_l00105}{105}} of file \mbox{\hyperlink{contacts_8c_source}{contacts.\+c}}.
+
+\Hypertarget{contacts_8h_a031967e1d0fa37ff6807eacec47a34f7}\label{contacts_8h_a031967e1d0fa37ff6807eacec47a34f7} 
+\index{contacts.h@{contacts.h}!save\_contacts\_to\_file@{save\_contacts\_to\_file}}
+\index{save\_contacts\_to\_file@{save\_contacts\_to\_file}!contacts.h@{contacts.h}}
+\doxysubsubsection{\texorpdfstring{save\_contacts\_to\_file()}{save\_contacts\_to\_file()}}
+{\footnotesize\ttfamily void save\+\_\+contacts\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_contacts}{Contacts}} \texorpdfstring{$\ast$}{*}}]{head,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})}
+
+
+
+Saves contacts to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Pointer to the head of the contacts list. \\
+\hline
+{\em filename} & Name of the file to save contacts to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{contacts_8c_source_l00020}{20}} of file \mbox{\hyperlink{contacts_8c_source}{contacts.\+c}}.
+

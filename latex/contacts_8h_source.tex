@@ -1,61 +1,61 @@
 \doxysection{contacts.\+h}
 \hypertarget{contacts_8h_source}{}\label{contacts_8h_source}\index{PhoneBook/contacts.h@{PhoneBook/contacts.h}}
-
+\mbox{\hyperlink{contacts_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONTACTS\_H\_INCLUDED}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONTACTS\_H\_INCLUDED}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ Define\ column\ widths\ for\ displaying\ contact\ details}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_ID\ 10}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_NAME\ 32}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_LAST\_NAME\ 32}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_PHONE\_NUMBER\ 15}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_STREET\ 32}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_NR\ 7}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_POST\_CODE\ 10}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_TOWN\ 31}}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{comment}{//\ Define\ the\ structure\ for\ an\ address}}
-\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_address}{Address}}\ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{char}\ street[30];}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{char}\ nr[6];}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{char}\ post\_code[7];}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}\ town[30];}
-\DoxyCodeLine{00020\ \}\ \mbox{\hyperlink{struct_address}{Address}};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{comment}{//\ Define\ the\ structure\ for\ a\ contact}}
-\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_contacts}{Contacts}}\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{char}\ name[30];}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{char}\ last\_name[30];}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{char}\ phone\_number[10];}
-\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{struct_address}{Address}}\ address;}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_contacts}{Contacts}}\ *next;}
-\DoxyCodeLine{00030\ \}\ \mbox{\hyperlink{struct_contacts}{Contacts}};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{comment}{//\ Function\ declarations\ for\ managing\ contacts}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{comment}{//\ Save\ contacts\ to\ a\ file}}
-\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a031967e1d0fa37ff6807eacec47a34f7}{save\_contacts\_to\_file}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{comment}{//\ Load\ contacts\ from\ a\ file}}
-\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a862802dfef5ce7462faad8c413692ed7}{load\_contacts\_from\_file}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **head,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{comment}{//\ Print\ a\ separator\ line\ in\ the\ contact\ list\ display}}
-\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a2e68ceb8df1b7f987cdac9138f69cabd}{print\_separator}}(\textcolor{keywordtype}{int}\ total\_width);}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{comment}{//\ Display\ the\ sorting\ menu\ for\ contacts}}
-\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a287f984766d88dac5d698f9d0444d33f}{display\_sorting\_menu}}();}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{comment}{//\ Display\ the\ menu\ for\ selecting\ ascending\ or\ descending\ order}}
-\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_aad4b035c3680d70650316f433183cc97}{display\_ascending\_descending\_menu}}();}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \textcolor{comment}{//\ Display\ the\ list\ of\ contacts}}
-\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_adfbfc20957651cd598f548467b5185a5}{display\_list}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **headRef);}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{comment}{//\ Free\ memory\ allocated\ for\ the\ contacts\ list}}
-\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_ab3d407c36ccb647095b9eded86d91f03}{free\_contacts\_list}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head);}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTACTS\_H\_INCLUDED}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ CONTACTS\_H\_INCLUDED}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ CONTACTS\_H\_INCLUDED}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00004}00004\ \textcolor{comment}{//\ Define\ column\ widths\ for\ displaying\ contact\ details}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00005}\mbox{\hyperlink{contacts_8h_a68253a8a5f6a9bef2b207be75bec22e1}{00005}}\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_ID\ 10}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00006}\mbox{\hyperlink{contacts_8h_abd2cd22e3be18031f84a965f7dd91c2b}{00006}}\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_NAME\ 32}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00007}\mbox{\hyperlink{contacts_8h_aaa7d5dacf3b241406e61bdd5043affa3}{00007}}\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_LAST\_NAME\ 32}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00008}\mbox{\hyperlink{contacts_8h_ac433eebd68f31b97ba7f8a80bbae6032}{00008}}\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_PHONE\_NUMBER\ 15}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00009}\mbox{\hyperlink{contacts_8h_ae3ce23c36924fd9c31d4a71a220a9b3c}{00009}}\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_STREET\ 32}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00010}\mbox{\hyperlink{contacts_8h_a38d46e80a12d3d2153b40575688e2aec}{00010}}\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_NR\ 7}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00011}\mbox{\hyperlink{contacts_8h_aa8de2cb433db11713a7e5c59a33565d1}{00011}}\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_POST\_CODE\ 10}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00012}\mbox{\hyperlink{contacts_8h_a7f160c1e78dacde3f7b452bf38916018}{00012}}\ \textcolor{preprocessor}{\#define\ COLUMN\_WIDTH\_TOWN\ 31}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00014}00014\ \textcolor{comment}{//\ Define\ the\ structure\ for\ an\ address}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00015}\mbox{\hyperlink{struct_address}{00015}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_address}{Address}}\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00016}\mbox{\hyperlink{struct_address_acd6c927f2a56d871fe478a9e882396d0}{00016}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_address_acd6c927f2a56d871fe478a9e882396d0}{street}}[30];}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00017}\mbox{\hyperlink{struct_address_a7a991eea41f8d9aa185de463513b46e2}{00017}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_address_a7a991eea41f8d9aa185de463513b46e2}{nr}}[6];}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00018}\mbox{\hyperlink{struct_address_a50755310381c07cce96f41fccd860a71}{00018}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_address_a50755310381c07cce96f41fccd860a71}{post\_code}}[7];}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00019}\mbox{\hyperlink{struct_address_ad9a15792167890540d0ba04a1daf05a7}{00019}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_address_ad9a15792167890540d0ba04a1daf05a7}{town}}[30];}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00020}\mbox{\hyperlink{contacts_8h_a911b0ed0af12072240852ad821338a96}{00020}}\ \}\ \mbox{\hyperlink{contacts_8h_a911b0ed0af12072240852ad821338a96}{Address}};}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00022}00022\ \textcolor{comment}{//\ Define\ the\ structure\ for\ a\ contact}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00023}\mbox{\hyperlink{struct_contacts}{00023}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_contacts}{Contacts}}\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00024}\mbox{\hyperlink{struct_contacts_a7441ef0865bcb3db9b8064dd7375c1ea}{00024}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_contacts_a7441ef0865bcb3db9b8064dd7375c1ea}{id}};}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00025}\mbox{\hyperlink{struct_contacts_a72b952e44981373d9737a72616bb317f}{00025}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_contacts_a72b952e44981373d9737a72616bb317f}{name}}[30];}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00026}\mbox{\hyperlink{struct_contacts_a478f4abd2843dbd78c96fe39e1d729d1}{00026}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_contacts_a478f4abd2843dbd78c96fe39e1d729d1}{last\_name}}[30];}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00027}\mbox{\hyperlink{struct_contacts_a9ba481781ccbb44436cf997cec11cbc9}{00027}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_contacts_a9ba481781ccbb44436cf997cec11cbc9}{phone\_number}}[10];}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00028}\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{00028}}\ \ \ \ \ \mbox{\hyperlink{struct_address}{Address}}\ \mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}};}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00029}\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{00029}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_contacts}{Contacts}}\ *\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00030}\mbox{\hyperlink{contacts_8h_a73a94c8e38ee2e6f3b81e87081c47133}{00030}}\ \}\ \mbox{\hyperlink{contacts_8h_a73a94c8e38ee2e6f3b81e87081c47133}{Contacts}};}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00032}00032\ \textcolor{comment}{//\ Function\ declarations\ for\ managing\ contacts}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00034}00034\ \textcolor{comment}{//\ Save\ contacts\ to\ a\ file}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00035}00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8h_a031967e1d0fa37ff6807eacec47a34f7}{save\_contacts\_to\_file}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00037}00037\ \textcolor{comment}{//\ Load\ contacts\ from\ a\ file}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00038}00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8h_a862802dfef5ce7462faad8c413692ed7}{load\_contacts\_from\_file}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **head,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00040}00040\ \textcolor{comment}{//\ Print\ a\ separator\ line\ in\ the\ contact\ list\ display}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00041}00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8h_a2e68ceb8df1b7f987cdac9138f69cabd}{print\_separator}}(\textcolor{keywordtype}{int}\ total\_width);}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00043}00043\ \textcolor{comment}{//\ Display\ the\ sorting\ menu\ for\ contacts}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00044}00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8h_a287f984766d88dac5d698f9d0444d33f}{display\_sorting\_menu}}();}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00046}00046\ \textcolor{comment}{//\ Display\ the\ menu\ for\ selecting\ ascending\ or\ descending\ order}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00047}00047\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8h_aad4b035c3680d70650316f433183cc97}{display\_ascending\_descending\_menu}}();}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00049}00049\ \textcolor{comment}{//\ Display\ the\ list\ of\ contacts}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00050}00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8h_adfbfc20957651cd598f548467b5185a5}{display\_list}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **headRef);}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00052}00052\ \textcolor{comment}{//\ Free\ memory\ allocated\ for\ the\ contacts\ list}}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00053}00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8h_ab3d407c36ccb647095b9eded86d91f03}{free\_contacts\_list}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head);}
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{contacts_8h_source_l00055}00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONTACTS\_H\_INCLUDED}}
 
 \end{DoxyCode}

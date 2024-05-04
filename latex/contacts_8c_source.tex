@@ -1,0 +1,190 @@
+\doxysection{contacts.\+c}
+\hypertarget{contacts_8c_source}{}\label{contacts_8c_source}\index{PhoneBook/contacts.c@{PhoneBook/contacts.c}}
+\mbox{\hyperlink{contacts_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{contacts_8h}{contacts.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sort_8h}{sort.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{colors_8h}{colors.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu_8h}{menu.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00020}\mbox{\hyperlink{contacts_8c_a031967e1d0fa37ff6807eacec47a34f7}{00020}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a031967e1d0fa37ff6807eacec47a34f7}{save\_contacts\_to\_file}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00021}00021\ \ \ \ \ FILE\ *file\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}w"{}});\ \textcolor{comment}{//\ Open\ the\ file\ for\ writing}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (file\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00023}00023\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \mbox{\hyperlink{colors_8h_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}}\ \textcolor{stringliteral}{"{}Error\ opening\ file\ for\ writing.\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});\ \textcolor{comment}{//\ Print\ error\ message\ if\ file\ opening\ fails}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *current\ =\ head;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ contact\ information\ to\ the\ file}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ fprintf(file,\ \textcolor{stringliteral}{"{}\%d,\%s,\%s,\%s,\%s,\%s,\%s,\%s\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current-\/>\mbox{\hyperlink{struct_contacts_a7441ef0865bcb3db9b8064dd7375c1ea}{id}},\ current-\/>\mbox{\hyperlink{struct_contacts_a72b952e44981373d9737a72616bb317f}{name}},\ current-\/>\mbox{\hyperlink{struct_contacts_a478f4abd2843dbd78c96fe39e1d729d1}{last\_name}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current-\/>\mbox{\hyperlink{struct_contacts_a9ba481781ccbb44436cf997cec11cbc9}{phone\_number}},\ current-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_acd6c927f2a56d871fe478a9e882396d0}{street}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a7a991eea41f8d9aa185de463513b46e2}{nr}},\ current-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a50755310381c07cce96f41fccd860a71}{post\_code}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_ad9a15792167890540d0ba04a1daf05a7}{town}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ current\ =\ current-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00038}00038\ \ \ \ \ fclose(file);\ \textcolor{comment}{//\ Close\ the\ file}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00050}\mbox{\hyperlink{contacts_8c_a862802dfef5ce7462faad8c413692ed7}{00050}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a862802dfef5ce7462faad8c413692ed7}{load\_contacts\_from\_file}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **head,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00051}00051\ \ \ \ \ FILE\ *file\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}a+"{}});\ \textcolor{comment}{//\ Open\ the\ file\ for\ reading\ and\ appending}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (file\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \mbox{\hyperlink{colors_8h_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}}\ \textcolor{stringliteral}{"{}Error\ opening\ file\ for\ reading.\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});\ \textcolor{comment}{//\ Print\ error\ message\ if\ file\ opening\ fails}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{char}\ name[30],\ last\_name[30],\ phone\_number[10];}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{char}\ street[30],\ nr[6],\ post\_code[7],\ town[30];}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *current\_contact\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ Read\ contact\ information\ from\ the\ file}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{while}\ (fscanf(file,\ \textcolor{stringliteral}{"{}\%d,\%29[\string^,],\%29[\string^,],\%9[\string^,],\%29[\string^,],\%5[\string^,],\%6[\string^,],\%29[\string^\(\backslash\)n]"{}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\textcolor{keywordtype}{id},\ name,\ last\_name,\ phone\_number,\ street,\ nr,\ post\_code,\ town)==8)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ memory\ for\ a\ new\ contact}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *new\_contact\ =\ (\mbox{\hyperlink{struct_contacts}{Contacts}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_contacts}{Contacts}}));}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_contact\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \mbox{\hyperlink{colors_8h_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}}\ \textcolor{stringliteral}{"{}Memory\ allocation\ failed\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});\ \textcolor{comment}{//\ Print\ error\ message\ if\ memory\ allocation\ fails}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);\ \textcolor{comment}{//\ Terminate\ the\ program\ if\ memory\ allocation\ fails}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ new\_contact-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ new\ contact\ with\ the\ read\ data}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ new\_contact-\/>\mbox{\hyperlink{struct_contacts_a7441ef0865bcb3db9b8064dd7375c1ea}{id}}\ =\ id;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ strcpy(new\_contact-\/>\mbox{\hyperlink{struct_contacts_a72b952e44981373d9737a72616bb317f}{name}},\ name);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ strcpy(new\_contact-\/>\mbox{\hyperlink{struct_contacts_a478f4abd2843dbd78c96fe39e1d729d1}{last\_name}},\ last\_name);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ strcpy(new\_contact-\/>\mbox{\hyperlink{struct_contacts_a9ba481781ccbb44436cf997cec11cbc9}{phone\_number}},\ phone\_number);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ strcpy(new\_contact-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_acd6c927f2a56d871fe478a9e882396d0}{street}},\ street);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ strcpy(new\_contact-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a7a991eea41f8d9aa185de463513b46e2}{nr}},\ nr);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ strcpy(new\_contact-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a50755310381c07cce96f41fccd860a71}{post\_code}},\ post\_code);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ strcpy(new\_contact-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_ad9a15792167890540d0ba04a1daf05a7}{town}},\ town);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*head\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ list\ is\ empty,\ set\ the\ new\ contact\ as\ the\ head\ of\ the\ list}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ *head\ =\ new\_contact;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ current\_contact\ =\ new\_contact;\ \textcolor{comment}{//\ Set\ the\ current\ contact\ to\ the\ new\ contact}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Otherwise,\ append\ the\ new\ contact\ to\ the\ end\ of\ the\ list}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ current\_contact-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}}\ =\ new\_contact;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ current\_contact\ =\ new\_contact;\ \textcolor{comment}{//\ Update\ the\ current\ contact}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00094}00094\ \ \ \ \ fclose(file);\ \textcolor{comment}{//\ Close\ the\ file}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00105}\mbox{\hyperlink{contacts_8c_a2e68ceb8df1b7f987cdac9138f69cabd}{00105}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a2e68ceb8df1b7f987cdac9138f69cabd}{print\_separator}}(\textcolor{keywordtype}{int}\ total\_width)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00106}00106\ \ \ \ \ putchar(\textcolor{charliteral}{'+'});\ \textcolor{comment}{//\ Print\ the\ starting\ '+'\ character}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ total\_width;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ putchar(\textcolor{charliteral}{'-\/'});\ \textcolor{comment}{//\ Print\ '-\/'\ characters\ to\ create\ the\ separator\ line}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00110}00110\ \ \ \ \ putchar(\textcolor{charliteral}{'+'});\ \textcolor{comment}{//\ Print\ the\ ending\ '+'\ character}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00111}00111\ \ \ \ \ putchar(\textcolor{charliteral}{'\(\backslash\)n'});\ \textcolor{comment}{//\ Move\ to\ the\ next\ line\ after\ printing\ the\ separator}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00112}00112\ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00120}\mbox{\hyperlink{contacts_8c_a287f984766d88dac5d698f9d0444d33f}{00120}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_a287f984766d88dac5d698f9d0444d33f}{display\_sorting\_menu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00121}00121\ \ \ \ \ printf(\mbox{\hyperlink{colors_8h_a302607d6f585b7e9ba1c3eab8d2199d5}{COLOR\_BOLD}}\ \textcolor{stringliteral}{"{}SORTING\ MENU:\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00122}00122\ \ \ \ \ printf(\mbox{\hyperlink{colors_8h_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}}\ \textcolor{stringliteral}{"{}1.\ Sort\ by\ ID\ (default)\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00123}00123\ \ \ \ \ printf(\textcolor{stringliteral}{"{}2.\ Sort\ by\ name\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00124}00124\ \ \ \ \ printf(\textcolor{stringliteral}{"{}3.\ Sort\ by\ last\ name\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00125}00125\ \ \ \ \ printf(\textcolor{stringliteral}{"{}4.\ Sort\ by\ phone\ number\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00126}00126\ \ \ \ \ printf(\textcolor{stringliteral}{"{}5.\ Sort\ by\ town\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00127}00127\ \ \ \ \ printf(\textcolor{stringliteral}{"{}6.\ Sort\ by\ post\ code\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00128}00128\ \ \ \ \ printf(\mbox{\hyperlink{colors_8h_a23c70d699a5a775bc2e1ebeb8603f630}{COLOR\_BLUE}}\ \textcolor{stringliteral}{"{}0.\ Back\ to\ main\ menu\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00129}00129\ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00137}\mbox{\hyperlink{contacts_8c_aad4b035c3680d70650316f433183cc97}{00137}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_aad4b035c3680d70650316f433183cc97}{display\_ascending\_descending\_menu}}()\{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00138}00138\ \ \ \ \ printf(\mbox{\hyperlink{colors_8h_a302607d6f585b7e9ba1c3eab8d2199d5}{COLOR\_BOLD}}\ \textcolor{stringliteral}{"{}SELECT\ SORTING\ ORDER:\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00139}00139\ \ \ \ \ printf(\mbox{\hyperlink{colors_8h_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}}\ \textcolor{stringliteral}{"{}1.\ Ascending\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00140}00140\ \ \ \ \ printf(\textcolor{stringliteral}{"{}2.\ Descending\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00141}00141\ \ \ \ \ printf(\mbox{\hyperlink{colors_8h_a23c70d699a5a775bc2e1ebeb8603f630}{COLOR\_BLUE}}\ \textcolor{stringliteral}{"{}3.\ Cancel\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00142}00142\ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00151}\mbox{\hyperlink{contacts_8c_adfbfc20957651cd598f548467b5185a5}{00151}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_adfbfc20957651cd598f548467b5185a5}{display\_list}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ **headRef)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00152}00152\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *head\ =\ *headRef;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00153}00153\ \ \ \ \ \textcolor{keywordtype}{int}\ sorting\_mode\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00154}00154\ \ \ \ \ \textcolor{keywordtype}{int}\ order\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00157}00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{menu_8c_a4953d1edcbbfc7e420c423ded1d5621a}{clear\_screen}}();\ \textcolor{comment}{//\ Clear\ the\ screen\ for\ better\ readability}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00158}00158\ \ \ \ \ \ \ \ \ puts(\textcolor{stringliteral}{"{}"{}});\ \textcolor{comment}{//\ Print\ an\ empty\ line}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (head\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ puts(\mbox{\hyperlink{colors_8h_a23c70d699a5a775bc2e1ebeb8603f630}{COLOR\_BLUE}}\ \textcolor{stringliteral}{"{}There\ are\ no\ contacts\ in\ the\ list."{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00163}00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sorting\ the\ contacts\ list}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sorting\_mode\ >\ 0\ \&\&\ sorting\_mode\ <\ 7)}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{mergeSort}}(headRef,\ \mbox{\hyperlink{sort_8c_a501bd07b6f81dd67799b747419881094}{get\_comparator}}(sorting\_mode),\ order);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{mergeSort}}(headRef,\ \mbox{\hyperlink{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}{compareByID}},\ 1);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculating\ the\ total\ width\ of\ the\ separator}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ total\_width\ =\ \mbox{\hyperlink{contacts_8h_a68253a8a5f6a9bef2b207be75bec22e1}{COLUMN\_WIDTH\_ID}}\ +\ \mbox{\hyperlink{contacts_8h_abd2cd22e3be18031f84a965f7dd91c2b}{COLUMN\_WIDTH\_NAME}}\ +\ \mbox{\hyperlink{contacts_8h_aaa7d5dacf3b241406e61bdd5043affa3}{COLUMN\_WIDTH\_LAST\_NAME}}\ +}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_ac433eebd68f31b97ba7f8a80bbae6032}{COLUMN\_WIDTH\_PHONE\_NUMBER}}\ +\ \mbox{\hyperlink{contacts_8h_ae3ce23c36924fd9c31d4a71a220a9b3c}{COLUMN\_WIDTH\_STREET}}\ +\ \mbox{\hyperlink{contacts_8h_a38d46e80a12d3d2153b40575688e2aec}{COLUMN\_WIDTH\_NR}}\ +}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_aa8de2cb433db11713a7e5c59a33565d1}{COLUMN\_WIDTH\_POST\_CODE}}\ +\ \mbox{\hyperlink{contacts_8h_a7f160c1e78dacde3f7b452bf38916018}{COLUMN\_WIDTH\_TOWN}}\ +\ 8\ *\ 2\ -\/\ 1;\ \textcolor{comment}{//\ X\ *\ Y\ ;\ X\ -\/\ number\ of\ columns,\ Y\ -\/\ width\ of\ column\ with\ "{}|\ "{}}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00176}00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8c_a2e68ceb8df1b7f987cdac9138f69cabd}{print\_separator}}(total\_width);\ \textcolor{comment}{//\ Print\ the\ separator\ line}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Printing\ column\ headers}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00179}00179\ \ \ \ \ \ \ \ \ printf(\mbox{\hyperlink{colors_8h_a302607d6f585b7e9ba1c3eab8d2199d5}{COLOR\_BOLD}}\ \textcolor{stringliteral}{"{}|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\(\backslash\)n"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_a68253a8a5f6a9bef2b207be75bec22e1}{COLUMN\_WIDTH\_ID}},\ \textcolor{stringliteral}{"{}ID"{}},\ \mbox{\hyperlink{contacts_8h_abd2cd22e3be18031f84a965f7dd91c2b}{COLUMN\_WIDTH\_NAME}},\ \textcolor{stringliteral}{"{}Name"{}},\ \mbox{\hyperlink{contacts_8h_aaa7d5dacf3b241406e61bdd5043affa3}{COLUMN\_WIDTH\_LAST\_NAME}},\ \textcolor{stringliteral}{"{}Last\ Name"{}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_ac433eebd68f31b97ba7f8a80bbae6032}{COLUMN\_WIDTH\_PHONE\_NUMBER}},\ \textcolor{stringliteral}{"{}Phone\ Number"{}},\ \mbox{\hyperlink{contacts_8h_ae3ce23c36924fd9c31d4a71a220a9b3c}{COLUMN\_WIDTH\_STREET}},\ \textcolor{stringliteral}{"{}Street"{}},\ \mbox{\hyperlink{contacts_8h_a38d46e80a12d3d2153b40575688e2aec}{COLUMN\_WIDTH\_NR}},\ \textcolor{stringliteral}{"{}Nr"{}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_aa8de2cb433db11713a7e5c59a33565d1}{COLUMN\_WIDTH\_POST\_CODE}},\ \textcolor{stringliteral}{"{}Post\ Code"{}},\ \mbox{\hyperlink{contacts_8h_a7f160c1e78dacde3f7b452bf38916018}{COLUMN\_WIDTH\_TOWN}},\ \textcolor{stringliteral}{"{}Town"{}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00184}00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8c_a2e68ceb8df1b7f987cdac9138f69cabd}{print\_separator}}(total\_width);\ \textcolor{comment}{//\ Print\ the\ separator\ line}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Printing\ contact\ data\ in\ column\ format}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00187}00187\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *current\ =\ *headRef;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}|\ \%-\/*d|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\ \%-\/*s|\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_a68253a8a5f6a9bef2b207be75bec22e1}{COLUMN\_WIDTH\_ID}},\ current-\/>\mbox{\hyperlink{struct_contacts_a7441ef0865bcb3db9b8064dd7375c1ea}{id}},\ \mbox{\hyperlink{contacts_8h_abd2cd22e3be18031f84a965f7dd91c2b}{COLUMN\_WIDTH\_NAME}},\ current-\/>\mbox{\hyperlink{struct_contacts_a72b952e44981373d9737a72616bb317f}{name}},\ \mbox{\hyperlink{contacts_8h_aaa7d5dacf3b241406e61bdd5043affa3}{COLUMN\_WIDTH\_LAST\_NAME}},\ current-\/>\mbox{\hyperlink{struct_contacts_a478f4abd2843dbd78c96fe39e1d729d1}{last\_name}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_ac433eebd68f31b97ba7f8a80bbae6032}{COLUMN\_WIDTH\_PHONE\_NUMBER}},\ current-\/>\mbox{\hyperlink{struct_contacts_a9ba481781ccbb44436cf997cec11cbc9}{phone\_number}},\ \mbox{\hyperlink{contacts_8h_ae3ce23c36924fd9c31d4a71a220a9b3c}{COLUMN\_WIDTH\_STREET}},\ current-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_acd6c927f2a56d871fe478a9e882396d0}{street}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_a38d46e80a12d3d2153b40575688e2aec}{COLUMN\_WIDTH\_NR}},\ current-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a7a991eea41f8d9aa185de463513b46e2}{nr}},\ \mbox{\hyperlink{contacts_8h_aa8de2cb433db11713a7e5c59a33565d1}{COLUMN\_WIDTH\_POST\_CODE}},\ current-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_a50755310381c07cce96f41fccd860a71}{post\_code}},}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8h_a7f160c1e78dacde3f7b452bf38916018}{COLUMN\_WIDTH\_TOWN}},\ current-\/>\mbox{\hyperlink{struct_contacts_a36c1ab761d94dd6eae71ebd6a8ae9910}{address}}.\mbox{\hyperlink{struct_address_ad9a15792167890540d0ba04a1daf05a7}{town}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00198}00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8c_a2e68ceb8df1b7f987cdac9138f69cabd}{print\_separator}}(total\_width);\ \textcolor{comment}{//\ Print\ the\ separator\ line}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00200}00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8c_a287f984766d88dac5d698f9d0444d33f}{display\_sorting\_menu}}();\ \textcolor{comment}{//\ Display\ the\ sorting\ menu}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ sorting\_mode\ =\ \mbox{\hyperlink{menu_8c_a3fa599412893eddb08a7ee91ac233790}{get\_user\_choice}}();\ \textcolor{comment}{//\ Update\ sorting\ mode\ for\ the\ next\ iteration}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sorting\_mode\ >=\ 1\ \&\&\ sorting\_mode\ <=\ 6)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8c_aad4b035c3680d70650316f433183cc97}{display\_ascending\_descending\_menu}}();\ \textcolor{comment}{//\ Display\ the\ ascending/descending\ menu}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ order\_choice\ =\ \mbox{\hyperlink{menu_8c_a3fa599412893eddb08a7ee91ac233790}{get\_user\_choice}}();}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (order\_choice\ ==\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ order\ =\ -\/1;\ \textcolor{comment}{//\ Set\ order\ to\ descending}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(order\_choice\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ order\ =\ 1;\ \textcolor{comment}{//\ Default\ to\ ascending\ order}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(order\_choice\ ==\ 3)\{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\mbox{\hyperlink{colors_8h_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}}\ \textcolor{stringliteral}{"{}WRONG\ OPTION!"{}}\ \mbox{\hyperlink{colors_8h_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}});}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}(order\ !=\ 1\ \&\&\ order\ !=\ -\/1);}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00219}00219\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sorting\_mode\ !=\ 0);\ \textcolor{comment}{//\ Repeat\ until\ the\ user\ chooses\ to\ exit}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00220}00220\ \ \ \ \ \mbox{\hyperlink{sort_8c_a179c49c49bab7cfecdf3198d68074520}{mergeSort}}(headRef,\ \mbox{\hyperlink{sort_8c_aabfaaba1c3b7328d143d781bd995bd67}{compareByID}},\ 1);\ \textcolor{comment}{//\ Sort\ the\ list\ by\ ID\ before\ exiting}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00221}00221\ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00231}\mbox{\hyperlink{contacts_8c_ab3d407c36ccb647095b9eded86d91f03}{00231}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{contacts_8c_ab3d407c36ccb647095b9eded86d91f03}{free\_contacts\_list}}(\mbox{\hyperlink{struct_contacts}{Contacts}}\ *head)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00232}00232\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *current\ =\ head;}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00233}00233\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00234}00234\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *temp\ =\ current;\ \textcolor{comment}{//\ Store\ the\ current\ node\ temporarily}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00235}00235\ \ \ \ \ \ \ \ \ current\ =\ current-\/>\mbox{\hyperlink{struct_contacts_aaf5f9d0b627c6747915861e2de30c857}{next}};\ \textcolor{comment}{//\ Move\ to\ the\ next\ node}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00236}00236\ \ \ \ \ \ \ \ \ free(temp);\ \textcolor{comment}{//\ Free\ the\ memory\ for\ the\ current\ node}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00237}00237\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{contacts_8c_source_l00238}00238\ \}}
+
+\end{DoxyCode}

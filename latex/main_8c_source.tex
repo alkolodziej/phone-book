@@ -1,0 +1,43 @@
+\doxysection{main.\+c}
+\hypertarget{main_8c_source}{}\label{main_8c_source}\index{PhoneBook/main.c@{PhoneBook/main.c}}
+\mbox{\hyperlink{main_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{contacts_8h}{contacts.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu_8h}{menu.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00019}\mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00019}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{struct_contacts}{Contacts}}\ *head\ =\ NULL;\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Load\ contacts\ from\ file}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{contacts_8c_a862802dfef5ce7462faad8c413692ed7}{load\_contacts\_from\_file}}(\&head,\ \textcolor{stringliteral}{"{}contacts.csv"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ option;\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{menu_8c_a4953d1edcbbfc7e420c423ded1d5621a}{clear\_screen}}();\ \textcolor{comment}{//\ Clear\ the\ screen\ before\ displaying\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Main\ loop\ to\ display\ menu,\ get\ user\ choice,\ and\ execute\ selected\ option}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{menu_8c_a39f5190c4bbb94c4d470854781e91105}{display\_menu}}();\ \textcolor{comment}{//\ Display\ the\ main\ menu}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ option\ =\ \mbox{\hyperlink{menu_8c_a3fa599412893eddb08a7ee91ac233790}{get\_user\_choice}}();\ \textcolor{comment}{//\ Get\ user's\ menu\ choice}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{menu_8c_a4953d1edcbbfc7e420c423ded1d5621a}{clear\_screen}}();\ \textcolor{comment}{//\ Clear\ the\ screen\ before\ executing\ the\ option}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{menu_8c_a0fce0dcbb9829b8864867b32fc4ef88d}{execute\_option}}(\&head,\ option);\ \textcolor{comment}{//\ Execute\ the\ user-\/selected\ option}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Prompt\ the\ user\ to\ press\ enter\ to\ continue,\ except\ when\ exiting\ the\ program}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (option\ !=\ 0)\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nPress\ enter\ to\ continue...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ getchar();\ \textcolor{comment}{//\ Wait\ for\ user\ to\ press\ enter}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{contacts_8c_a031967e1d0fa37ff6807eacec47a34f7}{save\_contacts\_to\_file}}(head,\ \textcolor{stringliteral}{"{}contacts.csv"{}});\ \textcolor{comment}{//\ Save\ contacts\ to\ file\ after\ each\ operation}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{menu_8c_a4953d1edcbbfc7e420c423ded1d5621a}{clear\_screen}}();\ \textcolor{comment}{//\ Clear\ the\ screen\ before\ displaying\ the\ menu\ again}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00045}00045\ \ \ \ \ \}\ \textcolor{keywordflow}{while}(option\ !=\ 0);\ \textcolor{comment}{//\ Continue\ until\ the\ user\ chooses\ to\ exit\ the\ program}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{contacts_8c_ab3d407c36ccb647095b9eded86d91f03}{free\_contacts\_list}}(head);\ \textcolor{comment}{//\ Free\ dynamically\ allocated\ memory\ for\ the\ contacts\ linked\ list}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ Return\ 0\ to\ indicate\ successful\ execution}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00050}00050\ \}}
+
+\end{DoxyCode}

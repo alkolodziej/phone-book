@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['print_5fcontact_0',['print_contact',['../menu_8c.html#ac2dbe6b540f23c5644abe79862d067fb',1,'menu.c']]],
-  ['print_5fheader_1',['print_header',['../menu_8c.html#a3162395308bd9ed806c99d729143d686',1,'menu.c']]],
-  ['print_5fsearch_5fmenu_2',['print_search_menu',['../menu_8c.html#ab54d700593cee3e0ab3083f84368d44b',1,'menu.c']]],
-  ['print_5fseparator_3',['print_separator',['../contacts_8c.html#a2e68ceb8df1b7f987cdac9138f69cabd',1,'contacts.c']]]
+  ['last_5fname_0',['last_name',['../struct_contacts.html#a478f4abd2843dbd78c96fe39e1d729d1',1,'Contacts']]],
+  ['load_5fcontacts_5ffrom_5ffile_1',['load_contacts_from_file',['../contacts_8c.html#a862802dfef5ce7462faad8c413692ed7',1,'load_contacts_from_file(Contacts **head, const char *filename):&#160;contacts.c'],['../contacts_8h.html#a862802dfef5ce7462faad8c413692ed7',1,'load_contacts_from_file(Contacts **head, const char *filename):&#160;contacts.c']]]
 ];

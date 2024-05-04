@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['get_5fcomparator_0',['get_comparator',['../sort_8c.html#a501bd07b6f81dd67799b747419881094',1,'sort.c']]],
-  ['get_5fline_1',['get_line',['../menu_8c.html#a74661d92572cd38bcbca691ecda72243',1,'menu.c']]],
-  ['get_5fuser_5fchoice_2',['get_user_choice',['../menu_8c.html#a3fa599412893eddb08a7ee91ac233790',1,'menu.c']]]
+  ['features_0',['Features',['../md__phone_book_2_r_e_a_d_m_e.html#autotoc_md2',1,'']]],
+  ['free_5fcontacts_5flist_1',['free_contacts_list',['../contacts_8c.html#ab3d407c36ccb647095b9eded86d91f03',1,'free_contacts_list(Contacts *head):&#160;contacts.c'],['../contacts_8h.html#ab3d407c36ccb647095b9eded86d91f03',1,'free_contacts_list(Contacts *head):&#160;contacts.c']]]
 ];

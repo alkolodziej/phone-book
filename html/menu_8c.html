@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PhoneBook: PhoneBook/menu.c File Reference</title>
+<title>Phone Book: PhoneBook/menu.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">PhoneBook
+   <div id="projectname">Phone Book
    </div>
   </td>
  </tr>
@@ -88,14 +88,15 @@ $(function() {
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;ctype.h&gt;</code><br />
-<code>#include &quot;menu.h&quot;</code><br />
-<code>#include &quot;contacts.h&quot;</code><br />
-<code>#include &quot;colors.h&quot;</code><br />
-</div><table class="memberdecls">
+<code>#include &quot;<a class="el" href="menu_8h_source.html">menu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="contacts_8h_source.html">contacts.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="colors_8h_source.html">colors.h</a>&quot;</code><br />
+</div>
+<p><a href="menu_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a788be1e5263200d55dddebd3606ccad4" id="r_a788be1e5263200d55dddebd3606ccad4"><td class="memItemLeft" align="right" valign="top"><a id="a788be1e5263200d55dddebd3606ccad4" name="a788be1e5263200d55dddebd3606ccad4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>CLEAR_SCREEN</b>&#160;&#160;&#160;&quot;clear&quot;</td></tr>
+<tr class="memitem:a788be1e5263200d55dddebd3606ccad4" id="r_a788be1e5263200d55dddebd3606ccad4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a788be1e5263200d55dddebd3606ccad4">CLEAR_SCREEN</a>&#160;&#160;&#160;&quot;clear&quot;</td></tr>
 <tr class="separator:a788be1e5263200d55dddebd3606ccad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -133,9 +134,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a3162395308bd9ed806c99d729143d686" id="r_a3162395308bd9ed806c99d729143d686"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3162395308bd9ed806c99d729143d686">print_header</a> (int total_width)</td></tr>
 <tr class="memdesc:a3162395308bd9ed806c99d729143d686"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the header for displaying contact details.  <br /></td></tr>
 <tr class="separator:a3162395308bd9ed806c99d729143d686"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab54d700593cee3e0ab3083f84368d44b" id="r_ab54d700593cee3e0ab3083f84368d44b"><td class="memItemLeft" align="right" valign="top"><a id="ab54d700593cee3e0ab3083f84368d44b" name="ab54d700593cee3e0ab3083f84368d44b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b> ()</td></tr>
-<tr class="memdesc:ab54d700593cee3e0ab3083f84368d44b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the menu for selecting the field to search. <br /></td></tr>
+<tr class="memitem:ab54d700593cee3e0ab3083f84368d44b" id="r_ab54d700593cee3e0ab3083f84368d44b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab54d700593cee3e0ab3083f84368d44b">print_search_menu</a> ()</td></tr>
+<tr class="memdesc:ab54d700593cee3e0ab3083f84368d44b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the menu for selecting the field to search.  <br /></td></tr>
 <tr class="separator:ab54d700593cee3e0ab3083f84368d44b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a729ad62083f202b365e55edf55f6de0c" id="r_a729ad62083f202b365e55edf55f6de0c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a729ad62083f202b365e55edf55f6de0c">strcasecmp_partial</a> (const char *str1, const char *str2)</td></tr>
 <tr class="memdesc:a729ad62083f202b365e55edf55f6de0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two strings partially, ignoring case.  <br /></td></tr>
@@ -149,7 +149,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of functions related to the menu and contacts management. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+
+<p class="definition">Definition in file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a788be1e5263200d55dddebd3606ccad4" name="a788be1e5263200d55dddebd3606ccad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a788be1e5263200d55dddebd3606ccad4">&#9670;&#160;</a></span>CLEAR_SCREEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CLEAR_SCREEN&#160;&#160;&#160;&quot;clear&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00017">17</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a6a272dcd45faf21e90d670ebb101bb4b" name="a6a272dcd45faf21e90d670ebb101bb4b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a272dcd45faf21e90d670ebb101bb4b">&#9670;&#160;</a></span>add_contact_from_user()</h2>
 
@@ -173,6 +192,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00094">94</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
 
 </div>
 </div>
@@ -198,6 +219,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00081">81</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
 
 </div>
 </div>
@@ -230,6 +253,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00175">175</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+
 </div>
 </div>
 <a id="a4953d1edcbbfc7e420c423ded1d5621a" name="a4953d1edcbbfc7e420c423ded1d5621a"></a>
@@ -249,6 +274,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
 
 <p>Clear the terminal screen. </p>
 <p>This function clears the terminal screen. </p>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00025">25</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
 
 </div>
 </div>
@@ -276,6 +303,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00273">273</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+
 </div>
 </div>
 <a id="a39f5190c4bbb94c4d470854781e91105" name="a39f5190c4bbb94c4d470854781e91105"></a>
@@ -295,6 +324,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
 
 <p>Display the main menu. </p>
 <p>This function displays the main menu options. </p>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00047">47</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
 
 </div>
 </div>
@@ -321,6 +352,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00190">190</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
 
 </div>
 </div>
@@ -353,6 +386,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00523">523</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+
 </div>
 </div>
 <a id="a74661d92572cd38bcbca691ecda72243" name="a74661d92572cd38bcbca691ecda72243"></a>
@@ -383,6 +418,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00064">64</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+
 </div>
 </div>
 <a id="a3fa599412893eddb08a7ee91ac233790" name="a3fa599412893eddb08a7ee91ac233790"></a>
@@ -402,6 +439,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
 
 <p>Get user's choice from the menu. </p>
 <dl class="section return"><dt>Returns</dt><dd>User's choice. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00034">34</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
 
 </div>
 </div>
@@ -429,6 +468,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00314">314</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+
 </div>
 </div>
 <a id="a3162395308bd9ed806c99d729143d686" name="a3162395308bd9ed806c99d729143d686"></a>
@@ -455,6 +496,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00329">329</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+
+</div>
+</div>
+<a id="ab54d700593cee3e0ab3083f84368d44b" name="ab54d700593cee3e0ab3083f84368d44b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab54d700593cee3e0ab3083f84368d44b">&#9670;&#160;</a></span>print_search_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_search_menu </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print the menu for selecting the field to search. </p>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00345">345</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
+
 </div>
 </div>
 <a id="a444c7ecb10074e004b35284d746dd1b2" name="a444c7ecb10074e004b35284d746dd1b2"></a>
@@ -480,6 +544,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00394">394</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
 
 </div>
 </div>
@@ -512,6 +578,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>print_search_menu</b>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int Returns 1 if str1 contains str2 as a substring, otherwise returns 0. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="menu_8c_source.html#l00369">369</a> of file <a class="el" href="menu_8c_source.html">menu.c</a>.</p>
 
 </div>
 </div>
