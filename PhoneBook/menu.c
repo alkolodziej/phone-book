@@ -103,44 +103,43 @@ void add_contact_from_user(Contacts **head) {
 
     printf(COLOR_BOLD "Adding new contact\n\n" COLOR_RESET);
 
-    // getchar();
-    // Imię
+    // First name
     printf(COLOR_BOLD "Enter name: " COLOR_RESET);
     get_line(name, sizeof(name));
     check_if_blank(name);
     strcpy(new_contact->name, name);
 
-    // Nazwisko
+    // Last name
     printf(COLOR_BOLD "Enter last name: " COLOR_RESET);
     get_line(last_name, sizeof(last_name));
     check_if_blank(last_name);
     strcpy(new_contact->last_name, last_name);
 
-    // Numer telefonu
+    // Phone number
     printf(COLOR_BOLD "Enter phone number: " COLOR_RESET);
     get_line(phone_number, sizeof(phone_number));
     check_if_blank(phone_number);
     strcpy(new_contact->phone_number, phone_number);
 
-    // Ulica
+    // Street
     printf(COLOR_BOLD "Enter street: " COLOR_RESET);
     get_line(street, sizeof(street));
     check_if_blank(street);
     strcpy(new_contact->address.street, street);
 
-    // Numer domu
+    // House number
     printf(COLOR_BOLD "Enter house number: " COLOR_RESET);
     get_line(nr, sizeof(nr));
     check_if_blank(nr);
     strcpy(new_contact->address.nr, nr);
 
-    // Kod pocztowy
+    // Post code
     printf(COLOR_BOLD "Enter post code: " COLOR_RESET);
     get_line(post_code, sizeof(post_code));
     check_if_blank(post_code);
     strcpy(new_contact->address.post_code, post_code);
     
-    // Miasto
+    // Town
     printf(COLOR_BOLD "Enter town: " COLOR_RESET);
     get_line(town, sizeof(town));
     check_if_blank(town);
@@ -150,15 +149,15 @@ void add_contact_from_user(Contacts **head) {
     // printf("\n%s %s \t %s \t %s %s \t %s %s\n", name, last_name, phone_number, street, nr, post_code, town);
 
     if (*head == NULL) {
-        new_contact->id = 1; // Nadanie unikalnego ID dla pierwszego kontaktu
+        new_contact->id = 1; // Assign a unique ID for the first contact
         *head = new_contact;
     } else {
-        // W przeciwnym razie znajdź ostatni element listy i ustaw jego wskaźnik na następny na nowy kontakt
+        // Otherwise, find the last element in the list and set its pointer to the next to the new contact
         Contacts *current = *head;
         while (current->next != NULL) {
             current = current->next;
         }
-        new_contact->id = current->id + 1; // Nadanie unikalnego ID
+        new_contact->id = current->id + 1; // Assign a unique ID
         current->next = new_contact;
     }
     
@@ -201,45 +200,45 @@ void edit_contact_from_user(Contacts *head) {
 
         while (current != NULL) {
                 if (current->id == id) {
-                // Znaleziono kontakt o podanym ID, aktualizacja danych
+                // Contact with the given ID found, updating data
 
-                // Imię
+                // First name
                 printf(COLOR_YELLOW "Current name: %s\n" COLOR_RESET, current->name);
                 printf(COLOR_BOLD "Enter new name (leave blank to keep current): " COLOR_RESET);
                 get_line(name, sizeof(name));
 
-                // Nazwisko
+                // Last name
                 printf(COLOR_YELLOW "Current last name: %s\n" COLOR_RESET, current->last_name);
                 printf(COLOR_BOLD "Enter new last name (leave blank to keep current): " COLOR_RESET);
                 get_line(last_name, sizeof(last_name));
 
 
-                // Numer telefonu
+                // Phone number
                 printf(COLOR_YELLOW "Current phone number: %s\n" COLOR_RESET, current->phone_number);
                 printf(COLOR_BOLD "Enter new phone number (leave blank to keep current): " COLOR_RESET);
                 get_line(phone_number, sizeof(phone_number));
 
-                // Ulica
+                // Street
                 printf(COLOR_YELLOW "Current street: %s\n" COLOR_RESET, current->address.street);
                 printf(COLOR_BOLD "Enter new street (leave blank to keep current): " COLOR_RESET);
                 get_line(street, sizeof(street));
 
-                // Numer domu
+                // House number
                 printf(COLOR_YELLOW "Current house number: %s\n" COLOR_RESET, current->address.nr);
                 printf(COLOR_BOLD "Enter new house number (leave blank to keep current): " COLOR_RESET);
                 get_line(nr, sizeof(nr));
 
-                // Kod pocztowy
+                // Post code
                 printf(COLOR_YELLOW "Current post code: %s\n" COLOR_RESET, current->address.post_code);
                 printf(COLOR_BOLD "Enter new post code (leave blank to keep current): " COLOR_RESET);
                 get_line(post_code, sizeof(post_code));
 
-                // Miasto
+                // Town
                 printf(COLOR_YELLOW "Current town: %s\n" COLOR_RESET, current->address.town);
                 printf(COLOR_BOLD "Enter new town (leave blank to keep current): " COLOR_RESET);
                 get_line(town, sizeof(town));
 
-                // Aktualizacja danych, jeśli zostały wprowadzone
+                // Update data if entered
                 check_to_change(current->name, name);
                 check_to_change(current->last_name, last_name);
                 check_to_change(current->phone_number, phone_number);
@@ -255,10 +254,10 @@ void edit_contact_from_user(Contacts *head) {
             current = current->next;
         }
 
-        // Nie znaleziono kontaktu o podanym ID
+        // Contact with the provided ID not found
         printf(COLOR_BLUE "Contact with ID %d not found.\n" COLOR_RESET, id);  
     }   else
-        // Lista jest pusta
+        // The list is empty
         printf(COLOR_BLUE "List is empty.\n" COLOR_RESET);
 
 }
