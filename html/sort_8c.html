@@ -86,21 +86,19 @@ $(function() {
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="contacts_8h_source.html">contacts.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="sort_8h_source.html">sort.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="colors_8h_source.html">colors.h</a>&quot;</code><br />
-</div>
-<p><a href="sort_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &quot;contacts.h&quot;</code><br />
+<code>#include &quot;sort.h&quot;</code><br />
+<code>#include &quot;colors.h&quot;</code><br />
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6401d7addf873e06556fe378583b9097" id="r_a6401d7addf873e06556fe378583b9097"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_contacts.html">Contacts</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6401d7addf873e06556fe378583b9097">merge</a> (<a class="el" href="struct_contacts.html">Contacts</a> *a, <a class="el" href="struct_contacts.html">Contacts</a> *b, <a class="el" href="sort_8h.html#aaceb387ca61eaa38e7b8624c75bef773">Comparator</a> comp, int order)</td></tr>
+<tr class="memitem:a6401d7addf873e06556fe378583b9097" id="r_a6401d7addf873e06556fe378583b9097"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_contacts.html">Contacts</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6401d7addf873e06556fe378583b9097">merge</a> (<a class="el" href="struct_contacts.html">Contacts</a> *a, <a class="el" href="struct_contacts.html">Contacts</a> *b, Comparator comp, int order)</td></tr>
 <tr class="memdesc:a6401d7addf873e06556fe378583b9097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Merges two sorted lists into one.  <br /></td></tr>
 <tr class="separator:a6401d7addf873e06556fe378583b9097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1955302afa2fa54ed34a635c86ce47d" id="r_ac1955302afa2fa54ed34a635c86ce47d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1955302afa2fa54ed34a635c86ce47d">split</a> (<a class="el" href="struct_contacts.html">Contacts</a> *source, <a class="el" href="struct_contacts.html">Contacts</a> **frontRef, <a class="el" href="struct_contacts.html">Contacts</a> **backRef)</td></tr>
 <tr class="memdesc:ac1955302afa2fa54ed34a635c86ce47d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits the list into two sublists.  <br /></td></tr>
 <tr class="separator:ac1955302afa2fa54ed34a635c86ce47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a179c49c49bab7cfecdf3198d68074520" id="r_a179c49c49bab7cfecdf3198d68074520"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a179c49c49bab7cfecdf3198d68074520">mergeSort</a> (<a class="el" href="struct_contacts.html">Contacts</a> **headRef, <a class="el" href="sort_8h.html#aaceb387ca61eaa38e7b8624c75bef773">Comparator</a> comp, int order)</td></tr>
+<tr class="memitem:a179c49c49bab7cfecdf3198d68074520" id="r_a179c49c49bab7cfecdf3198d68074520"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a179c49c49bab7cfecdf3198d68074520">mergeSort</a> (<a class="el" href="struct_contacts.html">Contacts</a> **headRef, Comparator comp, int order)</td></tr>
 <tr class="memdesc:a179c49c49bab7cfecdf3198d68074520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts the linked list using Merge Sort.  <br /></td></tr>
 <tr class="separator:a179c49c49bab7cfecdf3198d68074520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabfaaba1c3b7328d143d781bd995bd67" id="r_aabfaaba1c3b7328d143d781bd995bd67"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabfaaba1c3b7328d143d781bd995bd67">compareByID</a> (const <a class="el" href="struct_contacts.html">Contacts</a> *a, const <a class="el" href="struct_contacts.html">Contacts</a> *b)</td></tr>
@@ -127,14 +125,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a9a6e2b7a071d710d3299718e03090f08" id="r_a9a6e2b7a071d710d3299718e03090f08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a6e2b7a071d710d3299718e03090f08">compareByTown</a> (const <a class="el" href="struct_contacts.html">Contacts</a> *a, const <a class="el" href="struct_contacts.html">Contacts</a> *b)</td></tr>
 <tr class="memdesc:a9a6e2b7a071d710d3299718e03090f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison function for sorting by town.  <br /></td></tr>
 <tr class="separator:a9a6e2b7a071d710d3299718e03090f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a501bd07b6f81dd67799b747419881094" id="r_a501bd07b6f81dd67799b747419881094"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sort_8h.html#aaceb387ca61eaa38e7b8624c75bef773">Comparator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a501bd07b6f81dd67799b747419881094">get_comparator</a> (int sorting_mode)</td></tr>
+<tr class="memitem:a501bd07b6f81dd67799b747419881094" id="r_a501bd07b6f81dd67799b747419881094"><td class="memItemLeft" align="right" valign="top">Comparator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a501bd07b6f81dd67799b747419881094">get_comparator</a> (int sorting_mode)</td></tr>
 <tr class="memdesc:a501bd07b6f81dd67799b747419881094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the comparator function based on user choice.  <br /></td></tr>
 <tr class="separator:a501bd07b6f81dd67799b747419881094"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of functions related to sorting contacts. </p>
-
-<p class="definition">Definition in file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="aabfaaba1c3b7328d143d781bd995bd67" name="aabfaaba1c3b7328d143d781bd995bd67"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aabfaaba1c3b7328d143d781bd995bd67">&#9670;&#160;</a></span>compareByID()</h2>
@@ -165,8 +161,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Negative if a should precede b, positive if b should precede a, zero if equal. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00121">121</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
 
 </div>
 </div>
@@ -200,8 +194,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Negative if a should precede b, positive if b should precede a, zero if equal. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00147">147</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
-
 </div>
 </div>
 <a id="a509273a5c1ba03570cf56dfbfff8629d" name="a509273a5c1ba03570cf56dfbfff8629d"></a>
@@ -233,8 +225,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Negative if a should precede b, positive if b should precede a, zero if equal. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00134">134</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
 
 </div>
 </div>
@@ -268,8 +258,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Negative if a should precede b, positive if b should precede a, zero if equal. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00186">186</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
-
 </div>
 </div>
 <a id="a614cebff538fd7e5fab99a816a2ca83d" name="a614cebff538fd7e5fab99a816a2ca83d"></a>
@@ -301,8 +289,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Negative if a should precede b, positive if b should precede a, zero if equal. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00160">160</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
 
 </div>
 </div>
@@ -336,8 +322,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Negative if a should precede b, positive if b should precede a, zero if equal. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00199">199</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
-
 </div>
 </div>
 <a id="ac425cf5b165fead1d78bd75c1a9656e4" name="ac425cf5b165fead1d78bd75c1a9656e4"></a>
@@ -369,8 +353,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Negative if a should precede b, positive if b should precede a, zero if equal. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00173">173</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
 
 </div>
 </div>
@@ -404,8 +386,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Negative if a should precede b, positive if b should precede a, zero if equal. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00212">212</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
-
 </div>
 </div>
 <a id="a501bd07b6f81dd67799b747419881094" name="a501bd07b6f81dd67799b747419881094"></a>
@@ -415,7 +395,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="sort_8h.html#aaceb387ca61eaa38e7b8624c75bef773">Comparator</a> get_comparator </td>
+          <td class="memname">Comparator get_comparator </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sorting_mode</em></span></td><td>)</td>
           <td></td>
@@ -432,8 +412,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Comparator function. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00224">224</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
 
 </div>
 </div>
@@ -456,7 +434,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="sort_8h.html#aaceb387ca61eaa38e7b8624c75bef773">Comparator</a></td>          <td class="paramname"><span class="paramname"><em>comp</em>, </span></td>
+          <td class="paramtype">Comparator</td>          <td class="paramname"><span class="paramname"><em>comp</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -479,8 +457,6 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the merged sorted list. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00024">24</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
-
 </div>
 </div>
 <a id="a179c49c49bab7cfecdf3198d68074520" name="a179c49c49bab7cfecdf3198d68074520"></a>
@@ -497,7 +473,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="sort_8h.html#aaceb387ca61eaa38e7b8624c75bef773">Comparator</a></td>          <td class="paramname"><span class="paramname"><em>comp</em>, </span></td>
+          <td class="paramtype">Comparator</td>          <td class="paramname"><span class="paramname"><em>comp</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -517,8 +493,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00091">91</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
 
 </div>
 </div>
@@ -556,8 +530,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="sort_8c_source.html#l00055">55</a> of file <a class="el" href="sort_8c_source.html">sort.c</a>.</p>
 
 </div>
 </div>
