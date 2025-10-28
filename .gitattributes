@@ -2,3 +2,5 @@
 *.css -linguist-detectable
 *.js -linguist-detectable
 *.tex -linguist-detectable
+*.toc -linguist-detectable
+*.sty -linguist-detectable
